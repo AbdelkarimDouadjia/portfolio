@@ -12,7 +12,7 @@ const Hero = () => {
               </h1>
               <img
                 className="absolute right-[1.7rem] min-[375px]:right-[3rem]  h-[4.5rem] top-[6.4rem] w-[4.5rem]  min-[400px]:right-[4rem] min-[500px]:right-[3rem] min-[900px]:h-24 min-[900px]:w-24 min-[900px]:!top-[8.7rem] min-[900px]:!right-[13rem]"
-                src="/src/assets/waving.1bae5fcfb51082b5c2b4.png"
+                src="https://github.com/AbdelkarimDouadjia/portfolio/blob/main/src/assets/waving.1bae5fcfb51082b5c2b4.png"
                 alt="waving_hand"
               />
               <p className="text-[#555] text-[1.8rem] font-medium leading-[1.6] mb-20 min-[900px]:mb-0 font-mulish">
