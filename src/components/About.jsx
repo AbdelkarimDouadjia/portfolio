@@ -18,7 +18,7 @@ const About = () => {
             />
             <span>
               <img
-                src="/src/assets/text2.3d5aa6ba2d0632bb4e0572631c3f9dc2.svghttps://raw.githubusercontent.com/AbdelkarimDouadjia/portfolio/9c07f03c1459b93d6585c47b7831bc379336d62a/src/assets/text2.3d5aa6ba2d0632bb4e0572631c3f9dc2.svg"
+                src="https://raw.githubusercontent.com/AbdelkarimDouadjia/portfolio/6225aae5f8c7f248a5cc4e4aa9b038d26262aa0d/src/assets/text2.3d5aa6ba2d0632bb4e0572631c3f9dc2.svg"
                 alt="text"
               />
             </span>
