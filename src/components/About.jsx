@@ -7,18 +7,18 @@ const About = () => {
         <div className="about-content ">
           <div className="img-side relative">
             <img
-              src="https://github.com/AbdelkarimDouadjia/portfolio/blob/main/src/assets/about-img.62b47e7f183d4b4e9feb.webp"
+              src="/src/assets/working-emoji.c5325f52b5be329995a5.png"
               alt="emoji"
               className="work-emoji "
             />
             <img
-              src="https://github.com/AbdelkarimDouadjia/portfolio/blob/main/src/assets/about-img.62b47e7f183d4b4e9feb.webp"
+              src="/src/assets/about-img.62b47e7f183d4b4e9feb.webp"
               alt="mee"
               className="img-side__main-img mx-auto"
             />
             <span>
               <img
-                src="https://github.com/AbdelkarimDouadjia/portfolio/blob/main/src/assets/text2.3d5aa6ba2d0632bb4e0572631c3f9dc2.svg"
+                src="/src/assets/text2.3d5aa6ba2d0632bb4e0572631c3f9dc2.svg"
                 alt="text"
               />
             </span>
