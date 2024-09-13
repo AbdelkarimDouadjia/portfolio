@@ -136,7 +136,7 @@ const ProjectsCard = ({ project, index }) => {
                 flexDirection: "row",
                 gap: 1,
                 flexWrap: "wrap",
-                width: "350px",
+                width: "100%",
                 justifyContent: "center",
               }}
             >
