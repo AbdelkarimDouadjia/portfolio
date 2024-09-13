@@ -79,7 +79,7 @@ const ProjectsCard = ({ project, index }) => {
               }
 			  `}
               sx={{
-                background: `url(${`/src/assets/${project.imgPath}`})`,
+                background: `url(${`${project.imgPath}`})`,
                 backgroundSize: "cover",
                 [theme.breakpoints.down("md")]: {
                   width: "100%",

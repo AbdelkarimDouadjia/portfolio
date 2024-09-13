@@ -6,7 +6,8 @@ const projectArray = [
     techStack: ["NextJS", "React", "Framer motion", "TailwindCSS"],
     codeLink: "https://github.com/AbdelkarimDouadjia/light-saas-landing-page",
     demoLink: "https://light-saas-landing-page-sigma.vercel.app/",
-    imgPath: "Light-Saas-Landing-Page.png",
+    imgPath:
+      "https://github.com/AbdelkarimDouadjia/portfolio/blob/main/src/assets/Light-Saas-Landing-Page.png?raw=true",
     scrollable: true,
   },
   {
@@ -17,7 +18,8 @@ const projectArray = [
     codeLink:
       "https://github.com/AbdelkarimDouadjia/saas-website-dark-landing-page",
     demoLink: "https://saas-website-dark-landing-page.vercel.app/",
-    imgPath: "Create-Next-App.png",
+    imgPath:
+      "https://github.com/AbdelkarimDouadjia/portfolio/blob/main/src/assets/Create-Next-App.png?raw=true",
     scrollable: true,
   },
 ];
