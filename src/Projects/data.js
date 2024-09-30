@@ -30,7 +30,8 @@ const projectArray = [
     codeLink:
       "https://github.com/AbdelkarimDouadjia/Grilli-restaurant-website?tab=readme-ov-file",
     demoLink: "https://abdelkarimdouadjia.github.io/Grilli-restaurant-website/",
-    imgPath: "/src/assets/Grilli-restaurant-website.png",
+    imgPath:
+      "https://github.com/AbdelkarimDouadjia/portfolio/blob/main/src/assets/Grilli-restaurant-website.png?raw=true",
     scrollable: true,
   },
 ];
