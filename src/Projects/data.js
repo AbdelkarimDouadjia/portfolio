@@ -22,6 +22,17 @@ const projectArray = [
       "https://github.com/AbdelkarimDouadjia/portfolio/blob/main/src/assets/Create-Next-App.png?raw=true",
     scrollable: true,
   },
+  {
+    title: "Grilli restaurant website 🍔",
+    description:
+      "A Restaurant landing page, built using HTML, CSS, and JavaScript. It features a clean and modern design with a responsive layout, making it perfect for showcasing a restaurant's menu and services.",
+    techStack: ["Html", "Css", "JavaScript"],
+    codeLink:
+      "https://github.com/AbdelkarimDouadjia/Grilli-restaurant-website?tab=readme-ov-file",
+    demoLink: "https://abdelkarimdouadjia.github.io/Grilli-restaurant-website/",
+    imgPath: "/src/assets/Grilli-restaurant-website.png",
+    scrollable: true,
+  },
 ];
 
 export default projectArray;
