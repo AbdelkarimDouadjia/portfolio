@@ -68,6 +68,34 @@ const Hero = () => {
                     <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"></path>
                   </svg>
                 </a>
+
+                {/* Download Resumé Icon */}
+                <a
+                  href="/src/assets/Abdelkarim-Douadjia-CV-Resume.pdf" // Replace with your resume
+                  download
+                  aria-label="Download CV"
+                  className="text-[#2d2e32] text-[3rem] transition-all duration-300 hover:text-[#147efb]"
+                  title="Download CV"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="tabler-icon tabler-icon-file-text"
+                  >
+                    <path d="M14 2l-10 0a2 2 0 0 0 -2 2l0 16a2 2 0 0 0 2 2l12 0a2 2 0 0 0 2 -2l0 -14l-6 -4z"></path>
+                    <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+                    <path d="M12 18h-6"></path>
+                    <path d="M12 14h-6"></path>
+                    <path d="M12 10h-6"></path>
+                  </svg>
+                </a>
               </span>
             </div>
             <div className="hero-img"></div>
