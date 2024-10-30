@@ -71,7 +71,7 @@ const Hero = () => {
 
                 {/* Download Resumé Icon */}
                 <a
-                  href="/src/assets/Abdelkarim-Douadjia-CV-Resume.pdf" // Replace with your resume
+                  href="/Abdelkarim-Douadjia-CV-Resume.pdf" // Replace with your resume
                   download
                   aria-label="Download CV"
                   className="text-[#2d2e32] text-[3rem] transition-all duration-300 hover:text-[#147efb]"
