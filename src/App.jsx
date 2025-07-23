@@ -5,7 +5,7 @@ import About from "./components/About.jsx";
 import Projects from "./components/Projects.jsx";
 import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
-import CertificationsSection from "./components/CertificationsSection.jsx";
+// import CertificationsSection from "./components/CertificationsSection.jsx";
 import "./index.css";
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
       <Hero />
       <About />
       <Projects />
-      <CertificationsSection />
+      {/* <CertificationsSection /> */}
       <Contact />
       <Footer />
     </>
