@@ -33,7 +33,7 @@ const Contact = () => {
               </span>
               <div className="contact__info">
                 <h3>Location</h3>
-                <p>Ain Defla, Algeria</p>
+                <p>Paris, France</p>
               </div>
             </div>
             <div className="contact__icon-box">

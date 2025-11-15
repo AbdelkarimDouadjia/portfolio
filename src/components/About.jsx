@@ -16,25 +16,71 @@ const About = () => {
               alt="mee"
               className="img-side__main-img mx-auto"
             />
-            <span>
-              <img
-                src="https://raw.githubusercontent.com/AbdelkarimDouadjia/portfolio/6225aae5f8c7f248a5cc4e4aa9b038d26262aa0d/src/assets/text2.3d5aa6ba2d0632bb4e0572631c3f9dc2.svg"
-                alt="text"
-              />
+            <span className="flex items-center justify-center text-center">
+              <svg
+                width="190"
+                height="190"
+                viewBox="0 0 190 190"
+                className="animate-spin"
+                style={{ animationDuration: "9s" }}
+              >
+                <defs>
+                  <path
+                    id="circlePath"
+                    d="M 95, 95 m -75, 0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0"
+                  />
+                  <linearGradient
+                    id="textGradient"
+                    x1="0%"
+                    y1="0%"
+                    x2="100%"
+                    y2="100%"
+                  >
+                    <stop
+                      offset="0%"
+                      style={{ stopColor: "#147efb", stopOpacity: 1 }}
+                    />
+                    <stop
+                      offset="50%"
+                      style={{ stopColor: "#2d2e32", stopOpacity: 1 }}
+                    />
+                    <stop
+                      offset="100%"
+                      style={{ stopColor: "#147efb", stopOpacity: 1 }}
+                    />
+                  </linearGradient>
+                </defs>
+                <text
+                  fill="url(#textGradient)"
+                  fontSize="16"
+                  fontWeight="600"
+                  fontFamily="Poppins, sans-serif"
+                  letterSpacing="1.5"
+                >
+                  <textPath href="#circlePath" startOffset="0%">
+                    🤖 Machine Learning Engineer • ✨ AI Specialist • 🚀 Data
+                    Scientist •
+                  </textPath>
+                </text>
+              </svg>
             </span>
           </div>
           <div className="text-side">
             <h3>About me</h3>
             <h4>
-              Front-end Developer <br /> based in Ain Defla, Algeria 📍
+              Machine Learning Engineer <br /> based in Paris, France 📍
             </h4>
             <p>
-              Hey, my name is Abdelkarim, and I&apos;m a Frontend Developer. My
-              passion is to create and develop a clean UI/UX for my users.
+              Hey, my name is Abdelkarim, and I&apos;m a Machine Learning
+              Engineer. My passion is to build and deploy intelligent AI
+              solutions that solve real-world problems.
               <br />
               <br />
-              My main stack currently is React/Next.js in combination with
-              Tailwind CSS and TypeScript.
+              Currently pursuing Master&apos;s in AI - AMIS (Algorithmiques et
+              Modélisation à l&apos;Interface des Sciences) at University of
+              Paris-Saclay. My main stack includes Python, PyTorch, TensorFlow,
+              and scikit-learn for machine learning, along with Docker and
+              Kubernetes for deployment.
             </p>
           </div>
         </div>

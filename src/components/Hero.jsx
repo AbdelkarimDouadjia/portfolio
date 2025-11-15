@@ -7,8 +7,9 @@ const Hero = () => {
         <div className="content flex items-center gap-12 h-auto min-[900px]:gap-[10px] min-[900px]:h-[65rem] justify-center relative  flex-col  text-center  ">
           <div className="hero-main flex items-center flex-col-reverse h-auto gap-12 min-[900px]:gap-40 text-center justify-center relative min-[900px]:flex-row min-[900px]:text-left">
             <div className="hero-text flex flex-col max-w-[50rem] relative">
-              <h1 className="text-[#2d2e32] text-[4rem] min-[500px]:text-[5.5rem] leading-[1.2] my-8 font-bold">
-                Front-End React Developer
+              <h1 className="text-[#2d2e32] text-[4rem] min-[500px]:text-[5.4rem] leading-[1.2] my-8 font-bold">
+                <span className="">Machine Learning</span>
+                <br /> Engineer
               </h1>
               <img
                 className="absolute right-[1.7rem] min-[375px]:right-[3rem]  h-[4.5rem] top-[6.4rem] w-[4.5rem]  min-[400px]:right-[4rem] min-[500px]:right-[3rem] min-[900px]:h-24 min-[900px]:w-24 min-[900px]:!top-[8.7rem] min-[900px]:!right-[13rem]"
@@ -16,8 +17,9 @@ const Hero = () => {
                 alt="waving_hand"
               />
               <p className="text-[#555] text-[1.8rem] font-medium leading-[1.6] mb-20 min-[900px]:mb-0 font-mulish">
-                Hi, I&apos;m Abdelkarim Douadjia. A passionate Front-end React
-                Developer based in Ain Defla, Algeria. 📍
+                Hi, I&apos;m Abdelkarim Douadjia. A passionate Machine Learning
+                Engineer based in Paris, France 📍.
+                <br />
               </p>
               <span className="flex cursor-pointer gap-[1.6rem] justify-center mb-16 -mt-8 min-[900px]:my-[2.5rem] min-[900px]:mx-0 min-[900px]:justify-start">
                 <a
@@ -109,29 +111,35 @@ const Hero = () => {
                 <li className="cursor-pointer ">
                   <img
                     className="h-20 transition-all duration-300 w-44 hover:-translate-y-4 "
-                    src="https://skillicons.dev/icons?i=html,css"
-                    alt="skill-icon"
-                    preload="true"
-                  />
-                </li>
-                <li className="cursor-pointer ">
-                  <img
-                    className="h-20 transition-all duration-300 w-44 hover:-translate-y-4 "
-                    src="https://skillicons.dev/icons?i=js,ts"
+                    src="https://skillicons.dev/icons?i=python,pytorch"
                     alt="skill-icon"
                   />
                 </li>
                 <li className="cursor-pointer ">
                   <img
                     className="h-20 transition-all duration-300 w-44 hover:-translate-y-4 "
-                    src="https://skillicons.dev/icons?i=react,next"
+                    src="https://skillicons.dev/icons?i=tensorflow,sklearn"
                     alt="skill-icon"
                   />
                 </li>
                 <li className="cursor-pointer ">
                   <img
                     className="h-20 transition-all duration-300 w-44 hover:-translate-y-4 "
-                    src="https://skillicons.dev/icons?i=tailwind,scss"
+                    src="https://skillicons.dev/icons?i=opencv,aws"
+                    alt="skill-icon"
+                  />
+                </li>
+                <li className="cursor-pointer ">
+                  <img
+                    className="h-20 transition-all duration-300 w-44 hover:-translate-y-4 "
+                    src="https://skillicons.dev/icons?i=docker,kubernetes"
+                    alt="skill-icon"
+                  />
+                </li>
+                <li className="cursor-pointer ">
+                  <img
+                    className="h-20 transition-all duration-300 w-44 hover:-translate-y-4 "
+                    src="https://skillicons.dev/icons?i=git,github"
                     alt="skill-icon"
                   />
                 </li>
