@@ -49,13 +49,14 @@
             var rect = section.getBoundingClientRect();
             var viewportHeight = window.innerHeight || document.documentElement.clientHeight;
             var travel = Math.max(1, section.offsetHeight - viewportHeight);
-            var progress = Math.min(1, Math.max(0, -rect.top / travel));
+            var pinnedProgress = Math.min(1, Math.max(0, -rect.top / travel));
+            var progress = Math.min(1, Math.max(0, (viewportHeight * .5 - rect.top) / (travel + viewportHeight * .5)));
             var visible = rect.bottom > 0 && rect.top < viewportHeight;
             var paperProgress = progress * progress * (3 - 2 * progress);
             var contentProgress = Math.min(1, Math.max(0, (progress - 0.18) / 0.32));
             contentProgress = contentProgress * contentProgress * (3 - 2 * contentProgress);
 
-            section.style.setProperty("--spotlight-sticky-offset", (progress * travel).toFixed(1) + "px");
+            section.style.setProperty("--spotlight-sticky-offset", (pinnedProgress * travel).toFixed(1) + "px");
             section.style.setProperty("--spotlight-paper-progress", paperProgress.toFixed(4));
             section.style.setProperty("--spotlight-content-progress", contentProgress.toFixed(4));
             document.body.classList.toggle(

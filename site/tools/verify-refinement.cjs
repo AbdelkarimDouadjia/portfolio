@@ -72,7 +72,7 @@ fs.mkdirSync(output, { recursive: true });
           assert.ok(coloredPixels > 2000, "Mobile portrait reveal is blank");
         }
       }
-      assert.equal(await page.locator("#journey .practice-entry").count(), 1);
+      assert.equal(await page.locator("#journey .practice-entry").count(), 2);
       assert.ok(!(await page.locator("#journey").textContent()).includes("internship"));
       await scrollSection("[data-tool-scene]");
       await page.locator('[data-tool-mode="1"]').click();

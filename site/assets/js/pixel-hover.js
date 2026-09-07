@@ -139,6 +139,13 @@ if (canHover && !reduceMotion) {
         const width = Math.max(1, Math.round(rect.width));
         const height = Math.max(1, Math.round(rect.height));
         renderer.domElement.style.transform = `translate3d(${Math.round(rect.left)}px, ${Math.round(rect.top)}px, 0)`;
+        const frame = target.closest(".img-wrap, .process-study__media");
+        if (frame) {
+            const crop = frame.getBoundingClientRect();
+            renderer.domElement.style.clipPath = `inset(${Math.max(0, crop.top - rect.top)}px ${Math.max(0, rect.right - crop.right)}px ${Math.max(0, rect.bottom - crop.bottom)}px ${Math.max(0, crop.left - rect.left)}px)`;
+        } else {
+            renderer.domElement.style.clipPath = "none";
+        }
 
         if (width !== renderWidth || height !== renderHeight) {
             renderWidth = width;

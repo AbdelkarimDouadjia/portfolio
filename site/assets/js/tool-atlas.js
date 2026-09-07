@@ -1,5 +1,7 @@
+import { createSystemVolume } from "./system-volume.js";
 const host = document.querySelector("[data-tool-scene]");
 if (host) {
+  const volume = createSystemVolume(host.querySelector("[data-system-volume]"));
   const modes = [
     {
       name: "Learning",
@@ -44,6 +46,7 @@ if (host) {
   buttons.forEach(button => button.addEventListener("click", () => {
     const mode = modes[Number(button.dataset.toolMode)];
     if (!mode) return;
+    volume?.setMode(Number(button.dataset.toolMode));
     buttons.forEach(item => item.setAttribute("aria-pressed", String(item === button)));
     host.querySelector("[data-tool-caption]").textContent = button.querySelector("i").textContent + " / " + mode.name.toLowerCase();
     mode.steps.forEach(([title, detail], index) => {
