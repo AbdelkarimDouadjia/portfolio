@@ -1,0 +1,52 @@
+.signal-profile {
+    position: relative;
+    height: 100vh;
+    min-height: 560px;
+    overflow: hidden;
+    background: #000;
+    isolation: isolate;
+}
+
+.signal-profile__media {
+    position: relative;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+}
+
+.signal-profile__media img,
+.signal-profile__media canvas {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.signal-profile__media img {
+    object-fit: cover;
+    opacity: 1;
+}
+
+.signal-profile__media canvas {
+    pointer-events: none;
+    z-index: 2;
+}
+
+@media screen and (max-width: 767px) {
+    .signal-profile {
+        height: 78vh;
+        min-height: 430px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .signal-profile__media img {
+        opacity: 1;
+    }
+
+    .signal-profile__media canvas {
+        display: none;
+    }
+}

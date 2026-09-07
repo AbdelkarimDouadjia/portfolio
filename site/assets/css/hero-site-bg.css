@@ -1,0 +1,76 @@
+html,
+body {
+    background: #000;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.07;
+    --dot-bg: #000000;
+    --dot-color: #ffffff;
+    --dot-size: 2px;
+    --dot-space: 3px;
+    background:
+        linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+        linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+        var(--dot-color);
+}
+
+.hero-site-glitch-canvas {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    opacity: 0.78;
+}
+
+@media (min-width: 80rem) {
+    body::before {
+        --dot-size: 4px;
+        --dot-space: 5px;
+    }
+}
+
+#main-wrap,
+#t,
+.page-content,
+.page-content section,
+section.works,
+section.awards,
+section.contact,
+footer,
+#mats-appendix {
+    position: relative;
+    background: transparent !important;
+}
+
+#mats-appendix .mats-pixi-wrap {
+    background: transparent !important;
+}
+
+#main-wrap,
+#t {
+    z-index: 1;
+}
+
+footer::after {
+    background: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+footer .social ul li a,
+footer .links ul li a,
+footer .links ul li.top a {
+    color: rgba(255, 255, 255, 0.82);
+}
+
+footer .social ul li a:hover,
+footer .links ul li a:hover {
+    color: #fff;
+}

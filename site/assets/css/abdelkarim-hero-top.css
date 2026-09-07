@@ -1,0 +1,423 @@
+/* Ported from clone section — scoped to this wrapper only; no site-wide body/html. */
+.abdelkarim-clone-hero,
+.abdelkarim-clone-hero * {
+  box-sizing: border-box;
+}
+
+.abdelkarim-clone-hero {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background: #000000;
+  color: #ffffff;
+  font-family: "Courier New", Courier, monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: auto;
+  font-smooth: never;
+  /* Shield from page-level effects; keep 1:1 with standalone clone. */
+  opacity: 1 !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+  isolation: isolate;
+}
+
+/* Matches clone `body::before` (phosphor-style dot grid), confined to this block. */
+.abdelkarim-clone-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.07;
+  --dot-bg: #000000;
+  --dot-color: #ffffff;
+  --dot-size: 2px;
+  --dot-space: 3px;
+  background:
+    linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%)
+    center / var(--dot-space) var(--dot-space),
+    linear-gradient(
+        var(--dot-bg) calc(var(--dot-space) - var(--dot-size)),
+        transparent 1%
+      )
+      center / var(--dot-space) var(--dot-space),
+    var(--dot-color);
+}
+
+@media (min-width: 80rem) {
+  .abdelkarim-clone-hero::before {
+    --dot-size: 4px;
+    --dot-space: 5px;
+  }
+}
+
+.abdelkarim-clone-hero a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.abdelkarim-clone-hero #hero {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  /* Let children (site-header vs canvas) stack by z-index; avoid isolate clipping the top bar */
+  isolation: auto;
+}
+
+.abdelkarim-clone-hero .scramble-link {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  touch-action: manipulation;
+  min-height: 18px;
+}
+
+.abdelkarim-clone-hero .scramble-link:focus-visible {
+  outline: 1px solid rgba(255, 255, 255, 0.55);
+  outline-offset: 4px;
+}
+
+.abdelkarim-clone-hero #ascii-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: transparent;
+}
+
+.abdelkarim-clone-hero #hero-bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 28px;
+  z-index: 30;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 32px;
+  padding: 0 22px;
+  pointer-events: none;
+}
+
+.abdelkarim-clone-hero #hero-bottom-left {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: 0.06em;
+  max-width: none;
+  white-space: nowrap;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.abdelkarim-clone-hero #hero-bottom-left p + p {
+  margin-top: 3px;
+  color: #ff5a1f;
+}
+
+.abdelkarim-clone-hero #hero-bottom-left p,
+.abdelkarim-clone-hero #hero-bottom-right p {
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+}
+
+.abdelkarim-clone-hero #hero-bottom-right {
+  font-family: "Courier New", Courier, monospace;
+  position: relative;
+  max-width: 35ch;
+  padding-left: 26px;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.06em;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.abdelkarim-clone-hero #hero-bottom-right::before {
+  content: "";
+  position: absolute;
+  top: 0.58em;
+  left: 0;
+  width: 16px;
+  height: 2px;
+  background: #ff5a1f;
+}
+
+@media (max-width: 980px) {
+  .abdelkarim-clone-hero #hero-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    bottom: 22px;
+  }
+
+  .abdelkarim-clone-hero #hero-bottom-right {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .abdelkarim-clone-hero #hero-bottom-left {
+    font-size: 18px;
+  }
+
+  .abdelkarim-clone-hero #hero-bottom-right {
+    font-size: 11px;
+    line-height: 1.4;
+    width: calc(100vw - 44px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .abdelkarim-clone-hero .scramble-link {
+    transition: none;
+  }
+}
+
+/* --- Second-site hero vs Patrick (original) global layers: no inherited blur/filter; nav + logo on top --- */
+/* same stack fix as index.html <style#abdelkarim-stack-fix>: content must be above #movie-bg (z-index:99 in style.css) */
+#movie-bg {
+  z-index: 0 !important;
+  opacity: 0 !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+  pointer-events: none;
+}
+
+#main-wrap,
+#main-wrap[data-scroll] {
+  position: relative;
+  z-index: 100 !important;
+  filter: none;
+  mix-blend-mode: normal;
+}
+
+/* Keep page content below the fixed top navigation layer. */
+#main-wrap > #t.scroll,
+#t.scroll {
+  position: relative;
+  z-index: 12;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+}
+
+body.pd-home #header,
+#header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: auto !important;
+  z-index: 180 !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  pointer-events: auto;
+  display: block !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow: visible !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+  -webkit-transform: none !important;
+  transform: none !important;
+}
+
+body:has(#loader:not(.loading--end)) #header {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none;
+}
+
+body.pd-home #header *,
+#header * {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+body.pd-home #header .wrap-header,
+#header .wrap-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 18px 22px 0 !important;
+  margin: 0 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+#t,
+#w,
+#a,
+#mats-appendix {
+  scroll-margin-top: 108px;
+}
+
+body.pd-home #header .site-logo,
+#header .site-logo {
+  display: inline-flex;
+  align-items: center;
+  width: clamp(112px, 14vw, 184px);
+  line-height: 1;
+  color: #ffffff;
+  padding: 0;
+  margin: 0;
+  transition: opacity 0.25s ease;
+}
+
+body.pd-home #header .site-logo:hover,
+body.pd-home #header .site-logo:focus-visible,
+#header .site-logo:hover,
+#header .site-logo:focus-visible {
+  opacity: 0.72 !important;
+}
+
+body.pd-home #header .site-logo img,
+#header .site-logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+body.pd-home #header .main-navigation,
+#header .main-navigation {
+  width: auto;
+  flex: 0 0 auto;
+}
+
+body.pd-home #header #menu-responsive ul,
+#header #menu-responsive ul {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: clamp(18px, 3vw, 44px);
+  margin: 0;
+}
+
+body.pd-home #header #menu-responsive ul li,
+#header #menu-responsive ul li {
+  display: block;
+  padding: 0;
+}
+
+body.pd-home #header #menu-responsive ul li a,
+#header #menu-responsive ul li a {
+  position: relative !important;
+  display: inline-block !important;
+  overflow: hidden;
+  min-height: 44px;
+  font-family: "Monument", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0;
+  text-transform: lowercase;
+  color: transparent !important;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
+}
+
+body.pd-home #header #menu-responsive ul li a::before,
+body.pd-home #header #menu-responsive ul li a::after,
+#header #menu-responsive ul li a::before,
+#header #menu-responsive ul li a::after {
+  content: attr(data-letters);
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block !important;
+  width: 100%;
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
+  transition: transform 0.35s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+body.pd-home #header #menu-responsive ul li a::before,
+#header #menu-responsive ul li a::before {
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+  clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+}
+
+body.pd-home #header #menu-responsive ul li a::after,
+#header #menu-responsive ul li a::after {
+  -webkit-clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%);
+  clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%);
+}
+
+body.pd-home #header #menu-responsive ul li a:hover::before,
+body.pd-home #header #menu-responsive ul li a:focus-visible::before,
+#header #menu-responsive ul li a:hover::before,
+#header #menu-responsive ul li a:focus-visible::before {
+  transform: translateY(-0.18em);
+}
+
+body.pd-home #header #menu-responsive ul li a:hover::after,
+body.pd-home #header #menu-responsive ul li a:focus-visible::after,
+#header #menu-responsive ul li a:hover::after,
+#header #menu-responsive ul li a:focus-visible::after {
+  transform: translateY(0.18em);
+}
+
+@media (max-width: 640px) {
+  body.pd-home #header .wrap-header,
+  #header .wrap-header {
+    padding: 14px 18px 0;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  body.pd-home #header .site-logo,
+  #header .site-logo {
+    width: clamp(92px, 28vw, 128px);
+  }
+
+  body.pd-home #header #menu-responsive ul,
+  #header #menu-responsive ul {
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  body.pd-home #header #menu-responsive ul li a,
+  #header #menu-responsive ul li a {
+    font-size: 12px;
+  }
+}
+
+.abdelkarim-clone-hero #ascii-canvas,
+.abdelkarim-clone-hero #hero {
+  filter: none !important;
+  mix-blend-mode: normal !important;
+  opacity: 1 !important;
+}

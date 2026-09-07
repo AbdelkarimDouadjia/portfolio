@@ -1,0 +1,182 @@
+window.PORTFOLIO_PROJECTS = [
+  {
+    repo: "Sign-language-detector-python",
+    title: "Sign Language Detector",
+    shortTitle: "Sign_ Language",
+    category: "AI / ML",
+    tags: ["AI / ML", "Python", "Computer Vision"],
+    filterTags: "ai-ml python computer-vision",
+    image: "assets/img/projects/sign-language-detector.png",
+    github: "https://github.com/AbdelkarimDouadjia/Sign-language-detector-python",
+    description: "Python computer vision project for recognizing hand signs from live visual input.",
+    fallbackReadme: "Sign Language Detector is a Python computer vision project focused on detecting sign-language gestures from visual input. It sits inside Abdelkarim Douadjia's AI and machine learning work as a practical model-building and inference experiment."
+  },
+  {
+    repo: "H2O_ai-Titanic_Dataset-AutoML",
+    title: "H2O AutoML Titanic",
+    shortTitle: "H2O_ AutoML",
+    category: "AI / ML",
+    tags: ["AI / ML", "AutoML", "Notebook"],
+    filterTags: "ai-ml automl notebook",
+    image: "assets/img/projects/h2o-automl-titanic.png",
+    github: "https://github.com/AbdelkarimDouadjia/H2O_ai-Titanic_Dataset-AutoML",
+    description: "AutoML workflow using H2O.ai on Kaggle's Titanic dataset for fast model prototyping.",
+    fallbackReadme: "H2O AutoML Titanic demonstrates H2O.ai AutoML for survival prediction, model comparison, training, and fast experimentation on Kaggle's Titanic dataset."
+  },
+  {
+    repo: "Heart-Disease-Prediction-with-Decision-Trees",
+    title: "Heart Disease Prediction",
+    shortTitle: "Heart_ Disease",
+    category: "AI / ML",
+    tags: ["AI / ML", "Decision Trees", "Health"],
+    filterTags: "ai-ml notebook health",
+    image: "assets/img/projects/heart-disease-decision-tree.png",
+    github: "https://github.com/AbdelkarimDouadjia/Heart-Disease-Prediction-with-Decision-Trees",
+    description: "Decision tree model exploring clinical risk prediction from structured health data.",
+    fallbackReadme: "Heart Disease Prediction is a machine learning notebook exploring clinical risk prediction with decision trees, structured health features, model interpretability, and a practical classification workflow."
+  },
+  {
+    repo: "handwritten-digit-svm",
+    title: "Handwritten Digit SVM",
+    shortTitle: "Digit_ SVM",
+    category: "AI / ML",
+    tags: ["AI / ML", "SVM", "Notebook"],
+    filterTags: "ai-ml notebook svm",
+    image: "assets/img/projects/handwritten-digit-svm.png",
+    github: "https://github.com/AbdelkarimDouadjia/handwritten-digit-svm",
+    description: "Support vector machine approach for recognizing handwritten numerical digits.",
+    fallbackReadme: "Handwritten Digit SVM is a notebook project for recognizing handwritten numerical digits with support vector machines, covering feature preparation, classifier training, and model evaluation."
+  },
+  {
+    repo: "Titanic-Survival-Prediction-Logistic-Regression",
+    title: "Titanic Logistic Regression",
+    category: "AI / ML",
+    tags: ["AI / ML", "Regression", "Notebook"],
+    filterTags: "ai-ml notebook",
+    image: "assets/img/projects/titanic-logistic-regression.png",
+    github: "https://github.com/AbdelkarimDouadjia/Titanic-Survival-Prediction-Logistic-Regression",
+    description: "Classic survival prediction pipeline using logistic regression on the Titanic dataset.",
+    fallbackReadme: "Titanic Logistic Regression is a machine learning notebook for survival prediction using logistic regression, feature preparation, training, and evaluation."
+  },
+  {
+    repo: "used-car-linear-regression",
+    title: "Used Car Linear Regression",
+    category: "AI / ML",
+    tags: ["AI / ML", "Regression", "Notebook"],
+    filterTags: "ai-ml notebook",
+    image: "assets/img/projects/used-car-linear-regression.png",
+    github: "https://github.com/AbdelkarimDouadjia/used-car-linear-regression",
+    description: "Regression model for estimating used car prices from structured features.",
+    fallbackReadme: "Used Car Linear Regression estimates used car prices from structured vehicle data with preprocessing, linear modeling, and evaluation."
+  },
+  {
+    repo: "Fetcher",
+    title: "Fetcher",
+    category: "Backend",
+    tags: ["Backend", "Python"],
+    filterTags: "backend python",
+    image: "assets/img/projects/fetcher.png",
+    github: "https://github.com/AbdelkarimDouadjia/Fetcher",
+    description: "Python repository for data retrieval and utility workflow experiments.",
+    fallbackReadme: "Fetcher is a Python project centered on fetching, retrieving, and organizing data for utility workflows and backend-oriented experiments."
+  },
+  {
+    repo: "portfolio",
+    title: "Portfolio",
+    category: "Web",
+    tags: ["Web", "JavaScript"],
+    filterTags: "web javascript",
+    image: "assets/img/projects/portfolio.png",
+    github: "https://github.com/AbdelkarimDouadjia/portfolio",
+    description: "Personal web portfolio repository and interactive front-end experiments.",
+    fallbackReadme: "Portfolio is Abdelkarim Douadjia's personal portfolio codebase, focused on interactive front-end work, presentation, and project storytelling."
+  },
+  {
+    repo: "Grilli-restaurant-website",
+    title: "Grilli Restaurant Website",
+    category: "Web",
+    tags: ["Web", "Responsive"],
+    filterTags: "web css javascript",
+    image: "assets/img/projects/grilli-restaurant.png",
+    github: "https://github.com/AbdelkarimDouadjia/Grilli-restaurant-website",
+    description: "Responsive restaurant website built with HTML, CSS, and JavaScript.",
+    fallbackReadme: "Grilli Restaurant Website is a responsive restaurant website built with HTML, CSS, and JavaScript, focused on layout, visual polish, and front-end interaction."
+  },
+  {
+    repo: "saas-website-dark-landing-page",
+    title: "Dark SaaS Landing Page",
+    category: "Web",
+    tags: ["Web", "TypeScript"],
+    filterTags: "web typescript",
+    image: "assets/img/projects/dark-saas.png",
+    github: "https://github.com/AbdelkarimDouadjia/saas-website-dark-landing-page",
+    description: "TypeScript landing page project with a dark SaaS visual direction.",
+    fallbackReadme: "Dark SaaS Landing Page is a TypeScript web landing page experiment using a dark visual direction and product-style front-end composition."
+  },
+  {
+    repo: "alx-backend",
+    title: "ALX Backend",
+    category: "Backend",
+    tags: ["Backend", "Python"],
+    filterTags: "backend python",
+    image: "assets/img/projects/alx-backend.png",
+    github: "https://github.com/AbdelkarimDouadjia/alx-backend",
+    description: "Backend engineering exercises and Python service foundations.",
+    fallbackReadme: "ALX Backend covers backend engineering exercises and service foundations from the ALX curriculum, with a focus on Python, APIs, storage, and server-side concepts."
+  },
+  {
+    repo: "alx-backend-javascript",
+    title: "ALX Backend JavaScript",
+    category: "Backend",
+    tags: ["Backend", "JavaScript"],
+    filterTags: "backend javascript",
+    image: "assets/img/projects/backend-javascript.png",
+    github: "https://github.com/AbdelkarimDouadjia/alx-backend-javascript",
+    description: "JavaScript backend concepts, APIs, and server-side learning projects.",
+    fallbackReadme: "ALX Backend JavaScript covers JavaScript backend exercises, server-side programming concepts, APIs, async flow, and practical service structure."
+  },
+  {
+    repo: "alx-low_level_programming",
+    title: "ALX Low Level Programming",
+    category: "Systems",
+    tags: ["Systems", "C"],
+    filterTags: "systems c",
+    image: "assets/img/projects/low-level-c.png",
+    github: "https://github.com/AbdelkarimDouadjia/alx-low_level_programming",
+    description: "C programming, memory, algorithms, and low-level systems foundations.",
+    fallbackReadme: "ALX Low Level Programming covers C programming and low-level systems foundations, including memory, pointers, algorithms, and core computer science exercises."
+  },
+  {
+    repo: "simple_shell",
+    title: "Simple Shell",
+    category: "Systems",
+    tags: ["Systems", "C"],
+    filterTags: "systems c",
+    image: "assets/img/projects/simple-shell.png",
+    github: "https://github.com/AbdelkarimDouadjia/simple_shell",
+    description: "C shell implementation project focused on process and command execution.",
+    fallbackReadme: "Simple Shell is a C shell implementation project focused on command parsing, process execution, environment handling, and Unix systems foundations."
+  },
+  {
+    repo: "Compose-Calculator",
+    title: "Compose Calculator",
+    category: "Mobile",
+    tags: ["Mobile", "Kotlin"],
+    filterTags: "mobile kotlin",
+    image: "assets/img/projects/compose-calculator.png",
+    github: "https://github.com/AbdelkarimDouadjia/Compose-Calculator",
+    description: "Kotlin Jetpack Compose calculator project for mobile UI practice.",
+    fallbackReadme: "Compose Calculator is a Kotlin Jetpack Compose calculator project focused on mobile UI structure, state, and component-driven Android development."
+  },
+  {
+    repo: "Medicare",
+    title: "Medicare",
+    category: "Web",
+    tags: ["Web", "PHP"],
+    filterTags: "web backend php",
+    image: "assets/img/projects/medicare.png",
+    github: "https://github.com/AbdelkarimDouadjia/Medicare",
+    description: "PHP healthcare-oriented web project and application practice.",
+    fallbackReadme: "Medicare is a healthcare-oriented web application project built around PHP and application practice, with patient-facing product concepts."
+  }
+];

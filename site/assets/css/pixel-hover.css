@@ -1,0 +1,28 @@
+.pixel-hover-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 170;
+    display: block;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+    pointer-events: none;
+    transform-origin: top left;
+    transition: opacity 80ms linear, visibility 0s linear 80ms;
+    will-change: transform, width, height;
+}
+
+.pixel-hover-canvas.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
+}
+
+@media (max-width: 999px), (pointer: coarse), (prefers-reduced-motion: reduce) {
+    .pixel-hover-canvas {
+        display: none;
+    }
+}

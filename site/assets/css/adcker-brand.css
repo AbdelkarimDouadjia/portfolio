@@ -1,0 +1,126 @@
+/* Adcker brand lockups */
+@font-face {
+  font-family: "AdckerOldEnglish";
+  src: url("../fonts/AdckerOldEnglish.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+.adcker-wordmark {
+  display: inline-block;
+  font-family: "AdckerOldEnglish", "Old English Text MT", Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  line-height: 0.74;
+  letter-spacing: 0;
+  color: #ffffff;
+  text-transform: lowercase;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+}
+
+#header .site-logo.adcker-nav-logo,
+body.pd-home #header .site-logo.adcker-nav-logo {
+  width: auto;
+  min-width: 0;
+  height: auto;
+  align-items: flex-start;
+}
+
+#header .site-logo.adcker-nav-logo .adcker-wordmark,
+body.pd-home #header .site-logo.adcker-nav-logo .adcker-wordmark {
+  font-size: clamp(18px, 1.65vw, 24px);
+  line-height: 1.2;
+}
+
+.footer-rope-divider {
+  position: relative;
+  z-index: 3;
+  width: min(1180px, calc(100vw - 44px));
+  height: 90px;
+  margin: 0 auto clamp(34px, 5vw, 72px);
+  pointer-events: auto;
+}
+
+.footer-rope-divider svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.footer-rope-path {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.82);
+  stroke-width: 1.4;
+  vector-effect: non-scaling-stroke;
+}
+
+#mats-appendix .footer-adcker-logo {
+  display: inline-block;
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  color: #ffffff;
+  text-decoration: none;
+  opacity: 1;
+  transition: opacity 0.25s ease;
+}
+
+#mats-appendix .footer-adcker-logo:hover,
+#mats-appendix .footer-adcker-logo:focus-visible {
+  opacity: 0.72;
+  text-decoration: none;
+}
+
+#mats-appendix .footer-adcker-logo-img {
+  display: block;
+  width: clamp(190px, 15vw, 220px);
+  max-width: min(100%, calc(100vw - 44px));
+  height: auto;
+  filter: none;
+  mix-blend-mode: normal;
+}
+
+#mats-appendix .footer-adcker-logo .adcker-symbol {
+  display: block;
+  width: clamp(76px, 8.8vw, 128px);
+  height: auto;
+  fill: currentColor;
+  flex: 0 0 auto;
+}
+
+#mats-appendix .footer-adcker-logo .adcker-wordmark {
+  font-size: clamp(56px, 7.8vw, 122px);
+}
+
+@media (max-width: 640px) {
+  #header .site-logo.adcker-nav-logo .adcker-wordmark,
+  body.pd-home #header .site-logo.adcker-nav-logo .adcker-wordmark {
+    font-size: clamp(15px, 4.6vw, 19px);
+  }
+
+  .footer-rope-divider {
+    width: calc(100vw - 36px);
+    height: 74px;
+    margin-top: 56px;
+  }
+
+  #mats-appendix .footer-adcker-logo {
+    width: auto;
+    margin: 0;
+  }
+
+  #mats-appendix .footer-adcker-logo-img {
+    width: clamp(146px, 42vw, 180px);
+    max-width: 100%;
+  }
+
+  #mats-appendix .footer-adcker-logo .adcker-symbol {
+    width: clamp(72px, 24vw, 96px);
+  }
+
+  #mats-appendix .footer-adcker-logo .adcker-wordmark {
+    font-size: clamp(48px, 19vw, 72px);
+  }
+}
