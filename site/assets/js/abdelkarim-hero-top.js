@@ -292,15 +292,15 @@
 
         offCtx.clearRect(0, 0, width, height);
         const referenceWidth = Math.min(
-          width * (width < 900 ? 0.84 : 0.77),
-          Math.max(0, width - 160)
+          width * (width < 720 ? 0.9 : width < 900 ? 0.84 : 0.77),
+          Math.max(0, width - (width < 720 ? 44 : 160))
         );
         const referenceHeight =
           referenceWidth * (ARTEFAKT_REFERENCE_HEIGHT / ARTEFAKT_REFERENCE_WIDTH);
         const baseMetrics = measureWordmark(100);
         const baseVisualHeight = Math.max(1, baseMetrics.ascent + baseMetrics.descent);
         const maxWordWidth =
-          width < 720 ? Math.max(160, width * 0.5) : Math.max(220, width - 160);
+          width < 720 ? width - 44 : Math.max(220, width - 160);
         let targetFontSize = (referenceHeight / baseVisualHeight) * 100;
         let metrics = measureWordmark(targetFontSize);
 
@@ -310,7 +310,7 @@
         }
 
         const offsetX = (width - metrics.width) * 0.5;
-        const offsetY = height * (width < 900 ? 0.34 : 0.315) - WORDMARK_BOX_PAD;
+        const offsetY = height * (width < 720 ? 0.44 : width < 900 ? 0.34 : 0.315) - WORDMARK_BOX_PAD;
         metrics = drawWordmarkMask(offCtx, offsetX, offsetY, targetFontSize);
 
         logoDraw.offsetX = offsetX;
@@ -1140,13 +1140,13 @@
 
       function resizeCanvas() {
         width = window.innerWidth;
-        height = window.innerHeight;
+        height = hero.clientHeight || window.innerHeight;
         const colDiv =
           (width < 720 ? HERO_CRT.gridColumnsNarrow : HERO_CRT.gridColumnsWide) *
           HERO_CRT.gridDensity;
-        charW = Math.max(HERO_CRT.gridCharWMin, width / colDiv);
+        charW = Math.max(width < 720 ? 2.3 : HERO_CRT.gridCharWMin, width / colDiv);
         charH = charW * 1.2;
-        fontSize = Math.max(8, Math.round(charH * 1.02));
+        fontSize = Math.max(width < 720 ? 3 : 8, Math.round(charH * 1.02));
         cols = Math.floor(width / charW);
         rows = Math.floor(height / charH);
 
@@ -1434,7 +1434,7 @@
         pointer.y = -1;
       }
 
-      hero.style.height = "100vh";
+      hero.style.height = "100%";
       resizeCanvas();
       render();
 

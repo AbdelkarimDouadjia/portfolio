@@ -43,20 +43,12 @@
   border: 0;
   backdrop-filter: none;
   isolation: isolate;
+  mix-blend-mode: difference;
   transform: none !important;
 }
 
 .project-home-header::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background:
-    linear-gradient(90deg, #000 1px, transparent 1px) center / 5px 5px,
-    linear-gradient(#000 1px, transparent 1px) center / 5px 5px,
-    #121212;
-  opacity: .96;
+  content: none;
 }
 
 .project-home-header-inner {

@@ -258,7 +258,12 @@ function getRevealProgress(webglDiv) {
     if (sequence) {
         const rect = sequence.getBoundingClientRect();
         const travel = Math.max(1, rect.height - viewHeight);
-        const raw = THREE.MathUtils.clamp(-rect.top / travel, 0, 1);
+        const naturalFlow = sequence.hasAttribute("data-signal-natural")
+            || (sequence.classList.contains("signal-about") && window.innerWidth <= 700);
+        const position = naturalFlow
+            ? (viewHeight - rect.top) / (viewHeight + rect.height)
+            : -rect.top / travel;
+        const raw = THREE.MathUtils.clamp(position, 0, 1);
         return Math.sin(Math.PI * raw) * 1.45;
     }
 

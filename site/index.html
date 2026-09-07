@@ -87,7 +87,7 @@
     <link rel="stylesheet" href="assets/css/signal-profile.css?v=5" />
     <link rel="stylesheet" href="assets/css/hero-site-bg.css?v=2" />
     <link rel="stylesheet" href="assets/css/awwwards-polish.css?v=6" />
-    <link rel="stylesheet" href="assets/css/home-refinement.css?v=1" />
+    <link rel="stylesheet" href="assets/css/home-refinement.css?v=2" />
     <!--
       Theme (#movie-bg z-index:99 over #main-wrap z-index:2) put ALL page content under a full-screen
       70% opacity film. Loader (z-up to 200) can block the view for 8s. This block forces correct stacking
@@ -352,9 +352,9 @@
             <div class="abdelkarim-clone-hero">
                 <section id="hero" aria-label="Abdelkarim hero section" data-aw-section="introduction">
                     <canvas id="ascii-canvas" aria-hidden="true"></canvas>
+                    <p class="hero-edition">Abdelkarim Douadjia<br /><span>Selected portfolio / 2026</span></p>
                     <div class="hero-note">
-                        <p>Curiosity, <em>compiled.</em></p>
-                        <a href="#w">Explore selected work <img src="assets/img/mats-force/arrow_diagonal_555555.svg" alt="" /></a>
+                        <p>Human curiosity.<br /><em>Machine intelligence.</em></p>
                     </div>
 
                     <div id="hero-bottom">
@@ -363,36 +363,36 @@
                             <p>PARIS, FRANCE</p>
                         </div>
                         <div id="hero-bottom-right">
-                            <p>AN INDEPENDENT MIND.<br />A HANDS-ON APPROACH.</p>
+                            <a class="hero-work-link" href="#w">Explore the work <img src="assets/img/mats-force/arrow_diagonal_555555.svg" alt="" /></a>
                         </div>
                     </div>
                 </section>
             </div>
             <!--  Page Content  -->
-            <section class="signal-profile signal-cinema signal-about" id="profile-signal" aria-labelledby="signal-about-title" data-aw-section="about the work" data-signal-sequence>
-                <div class="signal-cinema__sticky">
-                    <div class="signal-profile__media webgl" data-signal-reveal>
-                        <img src="ChatGPT%20Image%20Apr%2028%2C%202026%2C%2007_01_21%20PM.png" alt="Orange and teal light flowing across a dark field" loading="eager" />
-                    </div>
-                    <div class="signal-cinema__veil" aria-hidden="true"></div>
-                    <div class="signal-cinema__stage">
-                        <div class="signal-cinema__topline"><span>( a little context )</span><span>01 / about</span></div>
-                        <div class="signal-about__body">
-                            <div class="signal-about__intro">
-                                <p class="signal-frame__eyebrow">Software + machine learning</p>
-                                <h2 id="signal-about-title">Beyond<br />the model<span>.</span></h2>
-                                <p>I build the software around intelligent ideas: preparing the data, testing the model, and making the result usable.</p>
-                                <a class="signal-about__link" href="projects.html">The work behind the words <img src="assets/img/mats-force/arrow_diagonal_555555.svg" alt="" /></a>
-                            </div>
-                            <dl class="signal-about__notes">
-                                <div><dt><span>01</span>Seeing patterns</dt><dd>Computer vision and predictive models, from hand-sign detection to classification experiments.</dd></div>
-                                <div><dt><span>02</span>Connecting knowledge</dt><dd>Retrieval-based assistants that turn scattered documents into a useful conversation.</dd></div>
-                                <div><dt><span>03</span>Making it usable</dt><dd>Interfaces and backend systems that connect technical work to the people using it.</dd></div>
-                            </dl>
-                        </div>
-                        <div class="signal-cinema__meter" aria-hidden="true"><span></span></div>
-                    </div>
+            <div class="hero-ticker" aria-label="Machine learning, software engineering, creative thinking">
+                <div class="hero-ticker__track" aria-hidden="true">
+                    <span>Machine learning <i>+</i> Software engineering <i>+</i> Creative thinking <i>+</i> Always learning <i>+</i>&nbsp;</span>
+                    <span>Machine learning <i>+</i> Software engineering <i>+</i> Creative thinking <i>+</i> Always learning <i>+</i>&nbsp;</span>
                 </div>
+            </div>
+            <section class="signal-profile personal-intro" id="profile-signal" aria-labelledby="personal-intro-title" data-aw-section="a little about me" data-signal-sequence data-signal-natural>
+                <div class="personal-intro__inner">
+                    <div class="personal-intro__copy" data-aw-reveal>
+                        <p class="chapter-eyebrow">( the person behind the projects )</p>
+                        <h2 id="personal-intro-title">Built on<br /><em>curiosity.</em></h2>
+                        <p class="personal-intro__lead">I'm Abdelkarim, a computer science student and machine learning developer.</p>
+                        <p>I'm drawn to the part before an answer: a useful question, a stubborn problem, or a small idea worth trying. Building is how I turn that curiosity into understanding.</p>
+                        <p>I care about the details, but also the reason behind them. What does this solve? Who is it for? What can I learn by making it?</p>
+                        <a class="personal-intro__link" href="https://www.linkedin.com/in/abdelkarimdouadjia" target="_blank" rel="noreferrer">More about me <img src="assets/img/mats-force/arrow_diagonal_555555.svg" alt="" /></a>
+                    </div>
+                    <figure class="personal-intro__portrait">
+                        <div class="signal-profile__media webgl" data-signal-reveal>
+                            <img src="assets/img/profile-github.jpg" alt="Abdelkarim's GitHub profile photograph" width="460" height="460" loading="eager" />
+                        </div>
+                        <figcaption><span>Always a student.</span><span>Always making.</span></figcaption>
+                    </figure>
+                </div>
+                <div class="chapter-seam chapter-seam--scan" aria-hidden="true"><span>From curiosity</span><i></i><span>to the work</span></div>
             </section>
             <div class="page-content">
                 <div class="container">
@@ -608,14 +608,20 @@
                     <section class="stack-lab tool-atlas aw-chapter" id="working-set" aria-labelledby="stack-lab-title" data-aw-section="working set">
                         <div class="tool-atlas__inner">
                             <div class="tool-atlas__header" data-aw-reveal>
-                                <p>( tools of the trade )</p>
+                                <p>( tools into practice )</p>
                                 <h2 id="stack-lab-title">The working<br /><em>set.</em></h2>
-                                <p>Different tools. Shared foundations.<br />A selection from my machine learning and software projects.</p>
+                                <p>From an input to something useful.<br />The tools change with the problem. The process connects them.</p>
                             </div>
                             <div class="tool-atlas__body">
-                                <div class="tool-atlas__scene" data-tool-scene>
-                                    <img class="tool-atlas__fallback" src="assets/img/projects/sign-language-detector.png" alt="" />
-                                    <div class="tool-atlas__caption" aria-hidden="true"><span data-tool-caption>01 / learning</span><span>input &gt; structure &gt; output</span></div>
+                                <div class="tool-atlas__scene workflow" data-tool-scene>
+                                    <div class="workflow__heading"><span data-tool-caption>01 / learning</span><span>Input &gt; output</span></div>
+                                    <ol class="workflow__steps">
+                                        <li class="is-current"><span>01</span><div><strong>Examples</strong><small>Python / datasets</small></div><i aria-hidden="true"></i></li>
+                                        <li><span>02</span><div><strong>Features</strong><small>OpenCV / preprocessing</small></div><i aria-hidden="true"></i></li>
+                                        <li><span>03</span><div><strong>Training</strong><small>PyTorch / model fitting</small></div><i aria-hidden="true"></i></li>
+                                        <li><span>04</span><div><strong>Evaluation</strong><small>Scikit-learn / held-out data</small></div><i aria-hidden="true"></i></li>
+                                    </ol>
+                                    <p class="workflow__foot">Examples become features. Evidence decides what works.</p>
                                 </div>
                                 <div class="tool-atlas__controls" aria-label="Explore my working set">
                                     <button type="button" class="tool-atlas__item" data-tool-mode="0" aria-pressed="true">
@@ -630,7 +636,7 @@
                                     <button type="button" class="tool-atlas__item" data-tool-mode="3" aria-pressed="false">
                                         <img src="assets/img/tools/docker.svg" alt="" /><span><strong>Delivery</strong><small>Docker / Git / SQL / Linux</small></span><i aria-hidden="true">04</i>
                                     </button>
-                                    <p class="tool-atlas__note">The right tool is the one that serves the problem.</p>
+                                    <p class="tool-atlas__note" data-tool-summary>Turn raw examples into a model, then check what it has learned.</p>
                                 </div>
                             </div>
                         </div>
@@ -723,21 +729,21 @@
         setTimeout(function(){var l=document.getElementById("loader");if(l&&!l.classList.contains("loading--end")){l.classList.add("loading--end")}},8000);
     </script>
     <script src="assets/js/master-dist.js"></script>
-    <script src="assets/js/abdelkarim-hero-top.js?v=4"></script>
+    <script src="assets/js/abdelkarim-hero-top.js?v=5"></script>
     <script src="assets/js/mats-appendix.js?v=2" defer></script>
     <script src="assets/js/footer-rope-divider.js?v=1" defer></script>
     <script src="assets/js/hero-site-bg-glitch.js?v=1" defer></script>
     <script src="assets/js/skills-section.js?v=9" defer></script>
-    <script type="module" src="assets/js/awwwards-polish.js?v=5"></script>
-    <script type="module" src="assets/js/tool-atlas.js?v=1"></script>
+    <script type="module" src="assets/js/awwwards-polish.js?v=6"></script>
+    <script type="module" src="assets/js/tool-atlas.js?v=2"></script>
     <script type="module" src="assets/js/pixel-hover.js?v=6"></script>
-    <script type="module" src="assets/js/signal-profile-reveal.js?v=7"></script>
+    <script type="module" src="assets/js/signal-profile-reveal.js?v=9"></script>
     <script>
         (function(){
             var header = document.getElementById("header");
             if (!header) return;
             document.addEventListener("click", function(event){
-                var link = event.target.closest('#header a[href^="#"], .hero-note a[href^="#"]');
+                var link = event.target.closest('#header a[href^="#"], .hero-work-link[href^="#"]');
                 if (!link) return;
                 var target = document.querySelector(link.getAttribute("href"));
                 if (!target) return;

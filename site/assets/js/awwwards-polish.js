@@ -155,13 +155,9 @@ let cinematicFrameId = 0;
 
 function createPhaseGlyphField(canvas) {
   const context = canvas?.getContext("2d");
-  if (!context) return function () {};
-
-  const glyphs = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+-*/<>[]{}";
-  let width = 0;
-  let height = 0;
-  let points = [];
-
+  const source = document.querySelector(".hero-site-glitch-canvas");
+  if (!context || !source) return function () {};
+  let width = 0, height = 0;
   return function drawPhaseGlyphs() {
     if (width !== canvas.clientWidth || height !== canvas.clientHeight) {
       width = canvas.clientWidth;
@@ -170,36 +166,11 @@ function createPhaseGlyphField(canvas) {
       canvas.width = Math.round(width * ratio);
       canvas.height = Math.round(height * ratio);
       context.setTransform(ratio, 0, 0, ratio, 0, 0);
-      context.textAlign = "center";
-      context.textBaseline = "middle";
-      points = Array.from({ length: width < 700 ? 46 : 82 }, function (_, index) {
-        return {
-          x: ((index * 73) % 997) / 997,
-          y: ((index * 137) % 991) / 991,
-          phase: index * 0.71,
-          speed: 0.12 + (index % 5) * 0.025,
-          size: 7 + (index % 4)
-        };
-      });
     }
-
     context.clearRect(0, 0, width, height);
-    const intensity = clamp((currentPhaseProgress - 0.62) / 0.26);
-    if (intensity <= 0) return;
-
-    const time = performance.now() * 0.001;
-    points.forEach(function (point, index) {
-      const pulse = 0.32 + (Math.sin(time * 2.1 + point.phase) + 1) * 0.34;
-      const x = (point.x * width + time * point.speed * 18) % width;
-      const y = point.y * height + Math.sin(time + point.phase) * 5;
-      const glyphIndex = (index + Math.floor(time * point.speed * 9)) % glyphs.length;
-      context.font = "700 " + point.size + "px 'Courier New', monospace";
-      context.fillStyle = "rgba(255,255,255," + (intensity * pulse * 0.62).toFixed(3) + ")";
-      context.fillText(glyphs[glyphIndex], x, y);
-      if (index % 17 === 0) {
-        context.fillRect(x + 8, y - 1, 18 + (index % 4) * 7, 1);
-      }
-    });
+    if (currentPhaseProgress < .62 || !source.width || !source.height) return;
+    context.globalAlpha = .78;
+    context.drawImage(source, 0, 0, width, height);
   };
 }
 
