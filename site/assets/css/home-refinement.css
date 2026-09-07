@@ -34,8 +34,8 @@
   mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 }
 .hero-ticker__track { display: flex; width: max-content; height: 100%; align-items: center; animation: type-drift 38s linear infinite; }
-.hero-ticker__track span { flex: none; min-width: 100vw; padding-right: 64px; white-space: nowrap; font: italic 30px/1 Georgia, serif; text-transform: none; letter-spacing: 0; }
-.hero-ticker__track i { display: inline-block; width: 48px; font-size: 0; }
+.hero-ticker__track span { display: inline-flex; align-items: center; flex: none; min-width: 100vw; white-space: nowrap; font: 36px/1.2 "AdckerOldEnglish", Georgia, serif; text-transform: lowercase; letter-spacing: 0; }
+.hero-ticker__track i { display: inline-block; flex: none; width: 38px; height: 24px; margin-inline: 34px; overflow: hidden; background: url("../img/adcker-logo-exact-transparent.png") left center / 108px 22px no-repeat; }
 .hero-ticker:hover .hero-ticker__track { animation-play-state: paused; }
 @keyframes type-drift { to { transform: translateX(-50%); } }
 .personal-intro { width: 100%; margin: 0; padding: 88px 0 0; background: transparent; }
@@ -121,8 +121,8 @@
   .abdelkarim-clone-hero #hero-bottom { flex-direction: row; align-items: center; gap: 18px; bottom: 18px; }
   .abdelkarim-clone-hero #hero-bottom-left { font-size: 10px; }
   .hero-ticker { height: 54px; }
-  .hero-ticker__track span { font-size: 18px; }
-  .hero-ticker__track i { margin-inline: 20px; }
+  .hero-ticker__track span { font-size: 29px; }
+  .hero-ticker__track i { margin-inline: 24px; }
   .personal-intro { padding-top: 56px; }
   .personal-intro__inner { width: calc(100% - 40px); grid-template-columns: minmax(0,1fr); gap: 36px; }
   .personal-intro__copy h2 { font-size: 36px; margin-bottom: 24px; }
@@ -180,8 +180,7 @@ body.pd-home #header .site-logo.adcker-nav-logo .adcker-wordmark,
 body.pd-home #header #menu-responsive ul li a::before,
 body.pd-home #header #menu-responsive ul li a::after { color: #fff !important; }
 .hero-ticker__track { animation-duration: 48s; }
-.hero-ticker__track span { color: #c7c7c7; }
-.hero-ticker__track i { margin: 0; }
+.hero-ticker__track span { color: #e2e2e2; }
 .hero-ticker__track span:nth-child(2) { opacity: 1; }
 .personal-intro__portrait { align-self: center; }
 .page-content section.process-study { padding: 56px 0 72px; width: min(1160px, calc(100% - 96px)); margin: auto; }
@@ -194,7 +193,7 @@ body.pd-home #header #menu-responsive ul li a::after { color: #fff !important; }
 .process-study__item { min-width: 0; }
 .process-study__item:nth-child(2) { padding-top: 46px; }
 .process-study__item:nth-child(3) { padding-top: 92px; }
-.process-study__media { position: relative; width: 100%; aspect-ratio: 1.15; overflow: hidden; }
+.process-study__media { position: relative; width: 100%; aspect-ratio: 1; overflow: hidden; }
 .process-study__media img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); }
 .process-study__media > span { position: absolute; inset: auto 14px 10px auto; font: 11px "Courier New", monospace; color: white; mix-blend-mode: difference; }
 .process-study__item h3 { margin: 22px 0 12px; color: #fff; font: 20px/1.2 "Monument", sans-serif; }
@@ -228,15 +227,13 @@ body.pd-home #header #menu-responsive ul li a::after { color: #fff !important; }
 .tool-atlas__item::after { background: #b4eee5; }
 .tool-atlas__note { grid-column: 1 / -1; }
 @media (max-width: 700px) {
-  .hero-ticker__track span { font-size: 24px; }
-  .hero-ticker__track i { width: 36px; }
+  .hero-ticker__track i { width: 32px; height: 22px; background-size: 92px auto; }
   .page-content section.process-study { width: calc(100% - 40px); padding-block: 32px 48px; }
   .process-study__heading { grid-template-columns: minmax(0,1fr); gap: 20px; }
   .process-study__heading h2 { font-size: 29px; }
   .process-study__heading h2 em { font-size: 44px; }
   .process-study__grid { gap: 30px; margin-top: 30px; grid-template-columns: minmax(0,1fr); }
   .process-study__item:nth-child(n) { padding-top: 0; }
-  .process-study__media { aspect-ratio: 1.5; }
   .process-study__item > p { max-width: none; }
   .process-study__outro { font-size: 10px; line-height: 1.5; }
   #journey .practice-entry { grid-template-columns: minmax(0,1fr); gap: 18px; }
