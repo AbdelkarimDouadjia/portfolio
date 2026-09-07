@@ -984,6 +984,7 @@ html.aw-motion [data-aw-reveal].is-visible {
 
 .repo-page .project-home-header {
   position: fixed !important;
+  z-index: 240;
 }
 
 .repo-index-band {

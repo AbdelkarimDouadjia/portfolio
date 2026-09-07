@@ -1,0 +1,183 @@
+#header { isolation: isolate; }
+#header::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 66px;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, #000 1px, transparent 1px) center / 5px 5px,
+    linear-gradient(#000 1px, transparent 1px) center / 5px 5px,
+    #121212;
+  opacity: 0;
+  transition: opacity .2s;
+}
+body.nav-scrolled #header::before { opacity: .97; }
+body.spotlight-story-active #header::before,
+body.phase-shift-light #header::before {
+  background:
+    linear-gradient(90deg, #dededa55 1px, transparent 1px) center / 4px 4px,
+    linear-gradient(#dededa55 1px, transparent 1px) center / 4px 4px,
+    #f3f3ef;
+}
+body.spotlight-story-transitioning #header::before { opacity: 0; }
+.hero-note {
+  position: absolute;
+  top: 64%;
+  left: 50%;
+  z-index: 2;
+  width: calc(100% - 40px);
+  transform: translateX(-50%);
+  text-align: center;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.hero-note p {
+  margin: 0 0 18px;
+  font: 48px/1.1 Georgia, serif;
+}
+.hero-note em { color: #ff713e; font-weight: 400; }
+.hero-note a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  gap: 24px;
+  border-bottom: 1px solid #666;
+  font: 11px/1.4 "Courier New", monospace;
+  text-transform: uppercase;
+  transition: border-color .25s;
+}
+.hero-note a:hover { border-color: #ff713e; }
+.hero-note img, .signal-about__link img { width: 16px; height: 16px; filter: brightness(0) invert(1); }
+.hero-note a:focus-visible, .signal-about__link:focus-visible, .tool-atlas__item:focus-visible { outline: 2px solid #ff713e; outline-offset: 5px; }
+.signal-profile.signal-about {
+  height: 165svh;
+  min-height: 1050px;
+  background: transparent;
+}
+.signal-about .signal-cinema__sticky { min-height: 680px; }
+.signal-about .signal-profile__media {
+  left: 35%;
+  width: 65%;
+  mask-image: linear-gradient(90deg, transparent, #000 35%);
+}
+.signal-about .signal-cinema__veil { background: rgba(0,0,0,.45); }
+.signal-about .signal-cinema__stage { padding: 100px 64px 44px; }
+.signal-about__body {
+  display: grid;
+  grid-template-columns: minmax(0,1.2fr) minmax(0,.75fr);
+  gap: 90px;
+  align-items: center;
+  flex: 1;
+  padding: 48px 0;
+}
+.signal-about__intro h2 {
+  margin: 0 0 32px;
+  color: #fff;
+  font: 64px/.98 "Monument", sans-serif;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+.signal-about__intro h2 span { color: #ff713e; }
+.signal-about__intro > p:not(.signal-frame__eyebrow) {
+  max-width: 38ch;
+  color: #c9c9c9;
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.6;
+}
+.signal-about__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 24px;
+  gap: 28px;
+  border-bottom: 1px solid #777;
+  color: #fff;
+  font-size: 13px;
+  pointer-events: auto;
+}
+.signal-about__notes { margin: 0; }
+.signal-about__notes > div { padding: 24px 0; border-top: 1px solid #ffffff40; }
+.signal-about__notes dt { display: flex; align-items: center; gap: 24px; color: #fff; font-size: 19px; }
+.signal-about__notes dt span { color: #ff956e; font: 11px "Courier New", monospace; }
+.signal-about__notes dd { margin: 12px 0 0 40px; color: #d4d4d4; font: 16px/1.6 "P", sans-serif; }
+#journey .practice-log__header { grid-template-columns: minmax(0,1fr) minmax(0,.7fr); }
+#journey .practice-log__eyebrow { grid-column: 1 / -1; }
+#journey .practice-log__header h2 { font-size: 48px; overflow-wrap: anywhere; }
+#journey .practice-entry h3 { font-size: 25px; }
+.tool-atlas { padding: 0; }
+.tool-atlas__inner { width: min(1280px, calc(100% - 100px)); margin: auto; padding: 96px 0 68px; }
+.tool-atlas__header { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,.65fr); gap: 24px 80px; align-items: end; }
+.tool-atlas__header > p:first-child { grid-column: 1 / -1; color: #81c9c9; font: 11px "Courier New", monospace; text-transform: uppercase; }
+.page-content .tool-atlas__header h2 { margin: 0; font: 58px/.98 "Monument", sans-serif; letter-spacing: 0; text-transform: uppercase; }
+.tool-atlas__header h2 em { font: italic 80px/.95 Georgia, serif; color: #ff713e; text-transform: none; }
+.tool-atlas__header > p:last-child { color: #b9b9b9; font-size: 16px; line-height: 1.6; margin: 0; }
+.tool-atlas__body { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(0,.8fr); gap: 64px; align-items: center; margin-top: 32px; }
+.tool-atlas__scene { position: relative; min-width: 0; height: 550px; }
+.tool-atlas__scene canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.tool-atlas__fallback { width: 100%; height: 100%; object-fit: contain; opacity: .5; }
+.tool-atlas__scene.is-ready .tool-atlas__fallback { display: none; }
+.tool-atlas__caption { position: absolute; inset: auto 0 10px; display: flex; justify-content: space-between; gap: 12px; padding-top: 16px; border-top: 1px solid #ffffff30; color: #aaa; font: 10px/1.5 "Courier New", monospace; text-transform: uppercase; }
+.tool-atlas__item { position: relative; display: grid; grid-template-columns: 30px minmax(0,1fr) 20px; gap: 24px; align-items: center; width: 100%; min-height: 104px; padding: 20px 0; border: 0; border-top: 1px solid #ffffff35; border-radius: 0; color: #bbb; background: transparent; text-align: left; cursor: pointer; }
+.tool-atlas__item::after { content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: #ff713e; transform: scaleX(0); transform-origin: left; transition: transform .35s; }
+.tool-atlas__item[aria-pressed="true"]::after { transform: scaleX(1); }
+.tool-atlas__item img { width: 28px; height: 28px; object-fit: contain; filter: invert(1); opacity: .65; transition: opacity .25s; }
+.tool-atlas__item strong { display: block; font: 21px/1.2 "Monument", sans-serif; font-weight: 400; letter-spacing: 0; }
+.tool-atlas__item small { display: block; margin-top: 9px; color: #aaa; font: 13px/1.5 "P", sans-serif; }
+.tool-atlas__item i { font: 11px "Courier New", monospace; }
+.tool-atlas__item[aria-pressed="true"], .tool-atlas__item:hover { color: #fff; }
+.tool-atlas__item[aria-pressed="true"] img, .tool-atlas__item:hover img { opacity: 1; }
+.page-content .tool-atlas__note { margin: 24px 0 0; color: #aaa; font-size: 13px; line-height: 1.6; }
+@media (max-width: 1100px) {
+  .signal-about .signal-cinema__stage { padding-inline: 32px; }
+  .signal-about__body { gap: 40px; }
+  .signal-about__intro h2 { font-size: 48px; }
+  .tool-atlas__inner { width: calc(100% - 64px); }
+  .tool-atlas__body { gap: 30px; }
+  .tool-atlas__header { gap: 24px 36px; }
+  .page-content .tool-atlas__header h2 { font-size: 44px; }
+}
+@media (max-width: 700px) {
+  .hero-note { top: 60%; }
+  .hero-note p { font-size: 34px; margin-bottom: 12px; }
+  .hero-note a { font-size: 10px; }
+  .signal-profile.signal-about { height: auto; min-height: 0; }
+  .signal-about .signal-cinema__sticky { height: auto; min-height: 0; transform: none; }
+  .signal-about .signal-cinema__stage { position: relative; padding: 80px 24px 40px; }
+  .signal-about .signal-profile__media { left: 0; width: 100%; mask-image: linear-gradient(180deg, transparent, #000 60%); }
+  .signal-about .signal-cinema__veil { background: rgba(0,0,0,.58); }
+  .signal-about__body { grid-template-columns: minmax(0,1fr); align-content: center; gap: 32px; padding: 30px 0; }
+  .signal-about__intro h2 { font-size: 42px; margin-bottom: 20px; }
+  .signal-about__intro > p:not(.signal-frame__eyebrow) { font-size: 15px; line-height: 1.5; }
+  .signal-about__link { margin-top: 10px; }
+  .signal-about__notes > div { padding: 14px 0; }
+  .signal-about__notes dt { font-size: 16px; }
+  .signal-about__notes dd { font-size: 13px; line-height: 1.5; margin-top: 8px; }
+  #journey .practice-log__header { grid-template-columns: minmax(0,1fr); gap: 24px; }
+  #journey .practice-log__header h2 { font-size: 32px; }
+  #journey .practice-entry h3 { font-size: 24px; }
+  .tool-atlas__inner { width: calc(100% - 40px); padding: 64px 0 40px; }
+  .tool-atlas__header { grid-template-columns: minmax(0,1fr); gap: 24px; }
+  .page-content .tool-atlas__header h2 { font-size: 35px; }
+  .tool-atlas__header h2 em { font-size: 58px; }
+  .tool-atlas__body { grid-template-columns: minmax(0,1fr); gap: 16px; margin-top: 8px; }
+  .tool-atlas__scene { height: 350px; }
+  .tool-atlas__item { min-height: 96px; gap: 16px; }
+  .tool-atlas__item strong { font-size: 20px; }
+  .tool-atlas__caption { font-size: 9px; }
+}
+@media (max-height: 650px) and (min-width: 701px) {
+  .hero-note { top: 62%; }
+  .hero-note p { font-size: 30px; margin-bottom: 8px; }
+}
+@media (max-width: 374px) {
+  #journey .practice-log__header h2 { font-size: 28px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .signal-profile.signal-about { height: auto; min-height: 0; }
+  .signal-about .signal-cinema__sticky { height: auto; min-height: 0; transform: none; }
+  .signal-about .signal-cinema__stage { position: relative; }
+  .tool-atlas__item::after { transition: none; }
+}

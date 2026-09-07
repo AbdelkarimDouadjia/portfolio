@@ -169,6 +169,12 @@
       let burstHeat = new Float32Array(0);
       let pointer = { x: -1, y: -1, inside: false, active: false };
       let animationFrame = 0;
+      let heroVisible = true;
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver(function (entries) {
+          heroVisible = entries[0].isIntersecting;
+        }).observe(hero);
+      }
       let frameCount = 0;
       let resizeTimer = 0;
       let lastDamageFrame = -999;
@@ -1308,6 +1314,10 @@
       }
 
       function render() {
+        if (!reduceMotion && (!heroVisible || document.hidden)) {
+          animationFrame = window.requestAnimationFrame(render);
+          return;
+        }
         frameCount += 1;
         ctx.clearRect(0, 0, width, height);
         ctx.imageSmoothingEnabled = false;
@@ -1347,7 +1357,7 @@
           updateParticles();
         }
 
-        animationFrame = window.requestAnimationFrame(render);
+        if (!reduceMotion) animationFrame = window.requestAnimationFrame(render);
       }
 
       function scheduleResize() {

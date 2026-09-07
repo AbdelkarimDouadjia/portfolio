@@ -151,7 +151,6 @@ if (reduceMotion) {
   setPhaseWord(0);
 }
 
-const stackNetworkDrawers = [];
 let cinematicFrameId = 0;
 
 function createPhaseGlyphField(canvas) {
@@ -211,7 +210,6 @@ const drawPhaseGlyphs = !reduceMotion && phaseGlyphCanvas
 function runCinematicFrame() {
   updateCinematicState();
   drawPhaseGlyphs();
-  stackNetworkDrawers.forEach(function (drawNetwork) { drawNetwork(); });
   cinematicFrameId = window.requestAnimationFrame(runCinematicFrame);
 }
 
@@ -222,158 +220,6 @@ if (!reduceMotion && (signalSequence || phaseShift)) {
   }, { once: true });
 }
 
-function createStackNetwork(field, tokens, canvas) {
-  const context = canvas.getContext("2d");
-  if (!context) return function () {};
-
-  const links = [[0, 1], [0, 2], [0, 3], [0, 4], [4, 5], [5, 6], [6, 7], [6, 8], [8, 9], [9, 10]];
-  let width = 0;
-  let height = 0;
-  let ratio = 1;
-  let stars = [];
-
-  return function drawNetwork() {
-    const rect = field.getBoundingClientRect();
-    if (rect.bottom < 0 || rect.top > window.innerHeight) return;
-
-    if (width !== field.clientWidth || height !== field.clientHeight) {
-      width = field.clientWidth;
-      height = field.clientHeight;
-      ratio = Math.min(window.devicePixelRatio || 1, 1.5);
-      canvas.width = Math.round(width * ratio);
-      canvas.height = Math.round(height * ratio);
-      context.setTransform(ratio, 0, 0, ratio, 0, 0);
-      stars = Array.from({ length: width < 700 ? 38 : 68 }, function (_, index) {
-        return {
-          x: ((index * 83) % 977) / 977 * width,
-          y: ((index * 149) % 983) / 983 * height,
-          phase: index * 0.63
-        };
-      });
-    }
-
-    context.clearRect(0, 0, width, height);
-    const time = performance.now() * 0.00018;
-
-    stars.forEach(function (star) {
-      const alpha = 0.08 + (Math.sin(time * 12 + star.phase) + 1) * 0.08;
-      context.fillStyle = "rgba(255,255,255," + alpha.toFixed(3) + ")";
-      context.fillRect(star.x, star.y, 1.5, 1.5);
-    });
-
-    const nodes = tokens.map(function (token) {
-      return {
-        x: token.offsetLeft + (parseFloat(token.style.getPropertyValue("--drag-x")) || 0),
-        y: token.offsetTop + (parseFloat(token.style.getPropertyValue("--drag-y")) || 0)
-      };
-    });
-    const hubX = width / 2;
-    const hubY = height / 2;
-
-    [0, 2, 4, 6, 8, 10].forEach(function (nodeIndex, spokeIndex) {
-      const node = nodes[nodeIndex];
-      if (!node) return;
-      context.beginPath();
-      context.moveTo(hubX, hubY);
-      context.lineTo(node.x, node.y);
-      context.strokeStyle = spokeIndex % 2
-        ? "rgba(74,213,217,0.12)"
-        : "rgba(255,90,31,0.12)";
-      context.lineWidth = 1;
-      context.stroke();
-
-      const spokeProgress = (time * 1.45 + spokeIndex * 0.19) % 1;
-      context.fillStyle = spokeIndex % 2 ? "#4ad5d9" : "#ff5a1f";
-      context.fillRect(
-        hubX + (node.x - hubX) * spokeProgress - 1.5,
-        hubY + (node.y - hubY) * spokeProgress - 1.5,
-        3,
-        3
-      );
-    });
-
-    links.forEach(function (link, index) {
-      const start = nodes[link[0]];
-      const end = nodes[link[1]];
-      const accent = index % 2 === 0 ? "255,90,31" : "74,213,217";
-      context.beginPath();
-      context.moveTo(start.x, start.y);
-      context.lineTo(end.x, end.y);
-      context.strokeStyle = "rgba(" + accent + ",0.22)";
-      context.lineWidth = 1;
-      context.stroke();
-
-      const progress = (time + index * 0.137) % 1;
-      const x = start.x + (end.x - start.x) * progress;
-      const y = start.y + (end.y - start.y) * progress;
-      context.fillStyle = "rgba(" + accent + ",0.9)";
-      context.fillRect(x - 2, y - 2, 4, 4);
-    });
-  };
-}
-
-document.querySelectorAll("[data-stack-field]").forEach(function (field) {
-  const tokens = Array.from(field.querySelectorAll("[data-stack-token]"));
-  const network = field.querySelector("[data-stack-network]");
-  if (network && !reduceMotion) stackNetworkDrawers.push(createStackNetwork(field, tokens, network));
-
-  tokens.forEach(function (token) {
-    const position = { x: 0, y: 0 };
-    let drag = null;
-
-    function moveTo(x, y) {
-      const halfWidth = token.offsetWidth / 2;
-      const halfHeight = token.offsetHeight / 2;
-      const baseX = token.offsetLeft;
-      const baseY = token.offsetTop;
-      position.x = clamp(x, halfWidth - baseX, field.clientWidth - halfWidth - baseX);
-      position.y = clamp(y, halfHeight - baseY, field.clientHeight - halfHeight - baseY);
-      token.style.setProperty("--drag-x", position.x.toFixed(1) + "px");
-      token.style.setProperty("--drag-y", position.y.toFixed(1) + "px");
-    }
-
-    token.addEventListener("pointerdown", function (event) {
-      if (event.button !== 0) return;
-      event.preventDefault();
-      drag = { pointerId: event.pointerId, x: event.clientX, y: event.clientY, startX: position.x, startY: position.y };
-      token.setPointerCapture(event.pointerId);
-      token.classList.add("is-dragging");
-    });
-
-    token.addEventListener("pointermove", function (event) {
-      if (!drag || drag.pointerId !== event.pointerId) return;
-      moveTo(drag.startX + event.clientX - drag.x, drag.startY + event.clientY - drag.y);
-    });
-
-    function release(event) {
-      if (!drag || drag.pointerId !== event.pointerId) return;
-      drag = null;
-      token.classList.remove("is-dragging");
-    }
-
-    token.addEventListener("pointerup", release);
-    token.addEventListener("pointercancel", release);
-    token.addEventListener("keydown", function (event) {
-      const distance = event.shiftKey ? 32 : 12;
-      const offsets = {
-        ArrowLeft: [-distance, 0],
-        ArrowRight: [distance, 0],
-        ArrowUp: [0, -distance],
-        ArrowDown: [0, distance]
-      };
-
-      if (event.key === "Home") {
-        event.preventDefault();
-        moveTo(0, 0);
-        return;
-      }
-
-      if (!offsets[event.key]) return;
-      event.preventDefault();
-      moveTo(position.x + offsets[event.key][0], position.y + offsets[event.key][1]);
-    });
-  });
-});
 
 const sectionCandidates = Array.from(document.querySelectorAll("[data-aw-section]"));
 const footer = document.querySelector("#mats-appendix, .project-footer");
@@ -390,6 +236,7 @@ let ticking = false;
 
 function updateScrollState() {
   ticking = false;
+  body.classList.toggle("nav-scrolled", window.scrollY > 64);
   updateCinematicState();
   const documentHeight = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
   const pageProgress = Math.min(1, Math.max(0, window.scrollY / documentHeight));

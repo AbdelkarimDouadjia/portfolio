@@ -30,7 +30,8 @@ fs.mkdirSync(output, { recursive: true });
         if (!route) {
           const statement = (await page.locator("#spotlight-story-title").textContent()).replace(/\s+/g, " ").trim();
           assert.equal(statement, "I build systems that see and learn from data to make useful products.");
-          assert.equal(await page.locator("#journey .practice-entry").count(), 4);
+          assert.equal(await page.locator("#journey .practice-entry").count(), 1);
+          assert.ok((await page.locator("#journey").textContent()).includes("Master AMIS"));
           for (const [selector, label] of [["#skills", "statement"], ["#journey", "journey"]]) {
             await page.locator(selector).scrollIntoViewIfNeeded();
             await page.waitForTimeout(400);

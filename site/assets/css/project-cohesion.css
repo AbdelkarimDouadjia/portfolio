@@ -39,10 +39,24 @@
   z-index: 240;
   height: 72px !important;
   padding: 0 !important;
-  background: rgba(0, 0, 0, 0.88);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(14px);
+  background: transparent;
+  border: 0;
+  backdrop-filter: none;
+  isolation: isolate;
   transform: none !important;
+}
+
+.project-home-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, #000 1px, transparent 1px) center / 5px 5px,
+    linear-gradient(#000 1px, transparent 1px) center / 5px 5px,
+    #121212;
+  opacity: .96;
 }
 
 .project-home-header-inner {

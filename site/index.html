@@ -86,7 +86,8 @@
     <link rel="stylesheet" href="assets/css/projects-page.css?v=2" />
     <link rel="stylesheet" href="assets/css/signal-profile.css?v=5" />
     <link rel="stylesheet" href="assets/css/hero-site-bg.css?v=2" />
-    <link rel="stylesheet" href="assets/css/awwwards-polish.css?v=5" />
+    <link rel="stylesheet" href="assets/css/awwwards-polish.css?v=6" />
+    <link rel="stylesheet" href="assets/css/home-refinement.css?v=1" />
     <!--
       Theme (#movie-bg z-index:99 over #main-wrap z-index:2) put ALL page content under a full-screen
       70% opacity film. Loader (z-up to 200) can block the view for 8s. This block forces correct stacking
@@ -351,6 +352,10 @@
             <div class="abdelkarim-clone-hero">
                 <section id="hero" aria-label="Abdelkarim hero section" data-aw-section="introduction">
                     <canvas id="ascii-canvas" aria-hidden="true"></canvas>
+                    <div class="hero-note">
+                        <p>Curiosity, <em>compiled.</em></p>
+                        <a href="#w">Explore selected work <img src="assets/img/mats-force/arrow_diagonal_555555.svg" alt="" /></a>
+                    </div>
 
                     <div id="hero-bottom">
                         <div id="hero-bottom-left">
@@ -358,45 +363,32 @@
                             <p>PARIS, FRANCE</p>
                         </div>
                         <div id="hero-bottom-right">
-                            <p>OBSESSED WITH THE MOMENT A QUESTION BECOMES A WORKING SYSTEM.</p>
+                            <p>AN INDEPENDENT MIND.<br />A HANDS-ON APPROACH.</p>
                         </div>
                     </div>
                 </section>
             </div>
             <!--  Page Content  -->
-            <section class="signal-profile signal-cinema" id="profile-signal" aria-label="From observation to useful software" data-aw-section="signal study" data-signal-sequence>
+            <section class="signal-profile signal-cinema signal-about" id="profile-signal" aria-labelledby="signal-about-title" data-aw-section="about the work" data-signal-sequence>
                 <div class="signal-cinema__sticky">
                     <div class="signal-profile__media webgl" data-signal-reveal>
-                        <img src="ChatGPT%20Image%20Apr%2028%2C%202026%2C%2007_01_21%20PM.png" alt="Abstract orange and teal light signal artwork" loading="eager" />
+                        <img src="ChatGPT%20Image%20Apr%2028%2C%202026%2C%2007_01_21%20PM.png" alt="Orange and teal light flowing across a dark field" loading="eager" />
                     </div>
                     <div class="signal-cinema__veil" aria-hidden="true"></div>
                     <div class="signal-cinema__stage">
-                        <div class="signal-cinema__topline">
-                            <span>( signal study / 001-003 )</span>
-                            <span data-signal-count>01 / 03</span>
-                        </div>
-                        <div class="signal-cinema__frames">
-                            <article class="signal-frame is-active" data-signal-frame>
-                                <div class="signal-frame__copy">
-                                    <p class="signal-frame__eyebrow">01 / observe</p>
-                                    <h2>Notice what<br />changes.</h2>
-                                    <p class="signal-frame__trace"><span>Pixels</span><span>Landmarks</span><span>Motion</span></p>
-                                </div>
-                            </article>
-                            <article class="signal-frame" data-signal-frame aria-hidden="true">
-                                <div class="signal-frame__copy">
-                                    <p class="signal-frame__eyebrow">02 / learn</p>
-                                    <h2>Find what<br />matters.</h2>
-                                    <p class="signal-frame__trace"><span>Data</span><span>Models</span><span>Evidence</span></p>
-                                </div>
-                            </article>
-                            <article class="signal-frame" data-signal-frame aria-hidden="true">
-                                <div class="signal-frame__copy">
-                                    <p class="signal-frame__eyebrow">03 / deliver</p>
-                                    <h2>Build what<br />helps.</h2>
-                                    <p class="signal-frame__trace"><span>Logic</span><span>Interface</span><span>Feedback</span></p>
-                                </div>
-                            </article>
+                        <div class="signal-cinema__topline"><span>( a little context )</span><span>01 / about</span></div>
+                        <div class="signal-about__body">
+                            <div class="signal-about__intro">
+                                <p class="signal-frame__eyebrow">Software + machine learning</p>
+                                <h2 id="signal-about-title">Beyond<br />the model<span>.</span></h2>
+                                <p>I build the software around intelligent ideas: preparing the data, testing the model, and making the result usable.</p>
+                                <a class="signal-about__link" href="projects.html">The work behind the words <img src="assets/img/mats-force/arrow_diagonal_555555.svg" alt="" /></a>
+                            </div>
+                            <dl class="signal-about__notes">
+                                <div><dt><span>01</span>Seeing patterns</dt><dd>Computer vision and predictive models, from hand-sign detection to classification experiments.</dd></div>
+                                <div><dt><span>02</span>Connecting knowledge</dt><dd>Retrieval-based assistants that turn scattered documents into a useful conversation.</dd></div>
+                                <div><dt><span>03</span>Making it usable</dt><dd>Interfaces and backend systems that connect technical work to the people using it.</dd></div>
+                            </dl>
                         </div>
                         <div class="signal-cinema__meter" aria-hidden="true"><span></span></div>
                     </div>
@@ -573,7 +565,7 @@
                             </h2>
                             <div class="spotlight-story__footer spotlight-story__footer--summary">
                                 <p>Machine learning / retrieval / interaction / deployment</p>
-                                <p>Paris / 2026</p>
+                                <p>From experiment to application</p>
                             </div>
                         </div>
                     </section>
@@ -595,109 +587,51 @@
                             <p class="phase-shift__caption">Problem / experiment / evidence</p>
                         </div>
                     </section>
-                    <section class="practice-log aw-chapter" id="journey" aria-labelledby="practice-log-title" data-aw-section="my journey">
+                    <section class="practice-log aw-chapter" id="journey" aria-labelledby="practice-log-title" data-aw-section="education">
                         <div class="practice-log__inner">
                             <div class="practice-log__header" data-aw-reveal>
-                                <p class="practice-log__eyebrow">( academic + practice / 2022-2027 )</p>
-                                <h2 id="practice-log-title">Path<br />in motion</h2>
-                                <p>Community, code, then a deeper question: how do intelligent systems work? My path from Algeria to Paris brings software practice and scientific thinking together.</p>
+                                <p class="practice-log__eyebrow">( university education )</p>
+                                <h2 id="practice-log-title">Academic<br />foundations.</h2>
+                                <p>Studying the principles behind the systems I build: algorithms, mathematical modeling, and data science.</p>
                             </div>
                             <div class="practice-log__entries">
                                 <article class="practice-entry practice-entry--orange" data-aw-reveal>
-                                    <div class="practice-entry__meta">
-                                        <span>01</span>
-                                        <span>Sep 2022 - Jun 2025</span>
-                                    </div>
-                                    <h3>GDSC development</h3>
-                                    <p>A Development Department member at GDSC Djilali Bounaama University. An early chapter rooted in a student developer community and a growing interest in building software.</p>
-                                    <div class="practice-entry__stack" aria-label="Focus areas">
-                                        <span>Community</span>
-                                        <span>Web development</span>
-                                        <span>Student development</span>
-                                    </div>
-                                </article>
-                                <article class="practice-entry practice-entry--teal" data-aw-reveal>
-                                    <div class="practice-entry__meta">
-                                        <span>02</span>
-                                        <span>2023</span>
-                                    </div>
-                                    <h3>TechnoHacks internship</h3>
-                                    <p>A web development internship building a calculator, a landing page, and a registration interface. Small, complete products that made frontend fundamentals practical.</p>
-                                    <div class="practice-entry__stack" aria-label="Focus areas">
-                                        <span>HTML</span>
-                                        <span>CSS</span>
-                                        <span>JavaScript</span>
-                                        <span>Responsive UI</span>
-                                    </div>
-                                </article>
-                                <article class="practice-entry practice-entry--orange" data-aw-reveal>
-                                    <div class="practice-entry__meta">
-                                        <span>03</span>
-                                        <span>2023 - 2024</span>
-                                    </div>
-                                    <h3>ALX software engineering</h3>
-                                    <p>A year-long software engineering program, from C and Python to backend APIs and Linux infrastructure. A foundation in debugging, problem solving, and building complete systems.</p>
-                                    <div class="practice-entry__stack" aria-label="Focus areas">
-                                        <span>C</span>
-                                        <span>Python</span>
-                                        <span>Shell</span>
-                                        <span>Backend systems</span>
-                                    </div>
-                                </article>
-                                <article class="practice-entry practice-entry--teal" data-aw-reveal>
-                                    <div class="practice-entry__meta">
-                                        <span>04</span>
-                                        <span>2025 - 2027</span>
-                                    </div>
-                                    <h3>AMIS / Paris-Saclay</h3>
-                                    <p>Master AMIS at Universit&eacute; Paris-Saclay / UVSQ: algorithms, mathematical modeling, and data science. Current work connects these foundations with retrieval systems and simulation.</p>
-                                    <div class="practice-entry__stack" aria-label="Focus areas">
-                                        <span>Algorithms</span>
-                                        <span>Modeling</span>
-                                        <span>Data science</span>
-                                        <span>2025-27 / in progress</span>
-                                    </div>
+                                    <div class="practice-entry__meta"><span>Master</span><span>2025 - 2027</span></div>
+                                    <h3>Universit&eacute;<br />Paris-Saclay / UVSQ</h3>
+                                    <p>Master AMIS: Algorithmique et Mod&eacute;lisation &agrave; l'Interface des Sciences. A meeting point between computer science and mathematics, with a focus on algorithms, optimization, simulation, and data analysis.</p>
+                                    <div class="practice-entry__stack"><span>Algorithms</span><span>Mathematical modeling</span><span>Data science</span><span>In progress</span></div>
                                 </article>
                             </div>
-                            <div class="practice-log__foot" data-aw-reveal>
-                                <span>Algeria - Paris / still learning in public</span>
-                                <a href="https://www.linkedin.com/in/abdelkarimdouadjia" target="_blank" rel="noreferrer">view full path <span aria-hidden="true">&#8599;</span></a>
-                            </div>
+                            <div class="practice-log__foot"><span>Computer science meets applied mathematics</span><a href="https://www.linkedin.com/in/abdelkarimdouadjia" target="_blank" rel="noreferrer">academic profile</a></div>
                         </div>
                     </section>
-                    <section class="stack-lab aw-chapter" aria-labelledby="stack-lab-title" data-aw-section="working set">
-                        <div class="stack-lab__inner">
-                            <div class="stack-lab__header" data-aw-reveal>
-                                <p>( practice constellation / 011 )</p>
-                                <h2 id="stack-lab-title">One orbit.<br />Many systems.</h2>
-                                <p>Models, retrieval, interfaces, and delivery orbit one core idea: make intelligence useful, testable, and real.</p>
+                    <section class="stack-lab tool-atlas aw-chapter" id="working-set" aria-labelledby="stack-lab-title" data-aw-section="working set">
+                        <div class="tool-atlas__inner">
+                            <div class="tool-atlas__header" data-aw-reveal>
+                                <p>( tools of the trade )</p>
+                                <h2 id="stack-lab-title">The working<br /><em>set.</em></h2>
+                                <p>Different tools. Shared foundations.<br />A selection from my machine learning and software projects.</p>
                             </div>
-                            <div class="stack-lab__field" data-stack-field aria-label="Interactive technology working set">
-                                <canvas class="stack-lab__network" data-stack-network aria-hidden="true"></canvas>
-                                <span class="stack-lab__orbit stack-lab__orbit--one" aria-hidden="true"></span>
-                                <span class="stack-lab__orbit stack-lab__orbit--two" aria-hidden="true"></span>
-                                <span class="stack-lab__orbit stack-lab__orbit--three" aria-hidden="true"></span>
-                                <span class="stack-lab__axis stack-lab__axis--x" aria-hidden="true">product orbit / 03</span>
-                                <span class="stack-lab__axis stack-lab__axis--y" aria-hidden="true">model orbit / 01</span>
-                                <div class="stack-lab__core" aria-hidden="true"><span>AK / AI</span><strong>practice<br />core</strong><i></i></div>
-                                <button class="stack-token stack-token--orange" type="button" data-stack-token style="--x: 13%; --y: 20%; --mx: 17%; --my: 16%; --r: -4deg;"><span class="stack-token__mark" aria-hidden="true">PY</span><span>Python</span></button>
-                                <button class="stack-token" type="button" data-stack-token style="--x: 35%; --y: 14%; --mx: 50%; --my: 13%; --r: 3deg;"><span class="stack-token__mark" aria-hidden="true">PT</span><span>PyTorch</span></button>
-                                <button class="stack-token stack-token--teal" type="button" data-stack-token style="--x: 61%; --y: 23%; --mx: 82%; --my: 18%; --r: -2deg;"><span class="stack-token__mark" aria-hidden="true">CV</span><span>OpenCV</span></button>
-                                <button class="stack-token" type="button" data-stack-token style="--x: 84%; --y: 13%; --mx: 19%; --my: 38%; --r: 5deg;"><span class="stack-token__mark" aria-hidden="true">SK</span><span>Scikit-learn</span></button>
-                                <button class="stack-token stack-token--orange" type="button" data-stack-token style="--x: 18%; --y: 51%; --mx: 51%; --my: 35%; --r: 2deg;"><span class="stack-token__mark" aria-hidden="true">LC</span><span>LangChain</span></button>
-                                <button class="stack-token" type="button" data-stack-token style="--x: 46%; --y: 43%; --mx: 82%; --my: 41%; --r: -5deg;"><span class="stack-token__mark" aria-hidden="true">DB</span><span>ChromaDB</span></button>
-                                <button class="stack-token stack-token--teal" type="button" data-stack-token style="--x: 72%; --y: 53%; --mx: 20%; --my: 59%; --r: 4deg;"><span class="stack-token__mark" aria-hidden="true">JS</span><span>JavaScript</span></button>
-                                <button class="stack-token" type="button" data-stack-token style="--x: 91%; --y: 62%; --mx: 50%; --my: 66%; --r: -3deg;"><span class="stack-token__mark" aria-hidden="true">GS</span><span>GSAP</span></button>
-                                <button class="stack-token stack-token--orange" type="button" data-stack-token style="--x: 23%; --y: 78%; --mx: 81%; --my: 62%; --r: -1deg;"><span class="stack-token__mark" aria-hidden="true">3D</span><span>Three.js</span></button>
-                                <button class="stack-token" type="button" data-stack-token style="--x: 53%; --y: 77%; --mx: 31%; --my: 80%; --r: 5deg;"><span class="stack-token__mark" aria-hidden="true">DK</span><span>Docker</span></button>
-                                <button class="stack-token stack-token--teal" type="button" data-stack-token style="--x: 79%; --y: 84%; --mx: 70%; --my: 81%; --r: -4deg;"><span class="stack-token__mark" aria-hidden="true">SQL</span><span>SQL</span></button>
-                            </div>
-                            <div class="stack-lab__foot" data-aw-reveal>
-                                <span><i>01</i> Learn</span>
-                                <span><i>02</i> Retrieve</span>
-                                <span><i>03</i> Interact</span>
-                                <span><i>04</i> Deliver</span>
-                                <strong>11 tools / one orbit</strong>
+                            <div class="tool-atlas__body">
+                                <div class="tool-atlas__scene" data-tool-scene>
+                                    <img class="tool-atlas__fallback" src="assets/img/projects/sign-language-detector.png" alt="" />
+                                    <div class="tool-atlas__caption" aria-hidden="true"><span data-tool-caption>01 / learning</span><span>input &gt; structure &gt; output</span></div>
+                                </div>
+                                <div class="tool-atlas__controls" aria-label="Explore my working set">
+                                    <button type="button" class="tool-atlas__item" data-tool-mode="0" aria-pressed="true">
+                                        <img src="assets/img/tools/python.svg" alt="" /><span><strong>Learning</strong><small>Python / PyTorch / OpenCV / Scikit-learn</small></span><i aria-hidden="true">01</i>
+                                    </button>
+                                    <button type="button" class="tool-atlas__item" data-tool-mode="1" aria-pressed="false">
+                                        <img src="assets/img/tools/langchain.svg" alt="" /><span><strong>Retrieval</strong><small>LangChain / ChromaDB / Hugging Face</small></span><i aria-hidden="true">02</i>
+                                    </button>
+                                    <button type="button" class="tool-atlas__item" data-tool-mode="2" aria-pressed="false">
+                                        <img src="assets/img/tools/javascript.svg" alt="" /><span><strong>Interaction</strong><small>JavaScript / React / GSAP / Three.js</small></span><i aria-hidden="true">03</i>
+                                    </button>
+                                    <button type="button" class="tool-atlas__item" data-tool-mode="3" aria-pressed="false">
+                                        <img src="assets/img/tools/docker.svg" alt="" /><span><strong>Delivery</strong><small>Docker / Git / SQL / Linux</small></span><i aria-hidden="true">04</i>
+                                    </button>
+                                    <p class="tool-atlas__note">The right tool is the one that serves the problem.</p>
+                                </div>
                             </div>
                         </div>
                     </section>
@@ -789,20 +723,21 @@
         setTimeout(function(){var l=document.getElementById("loader");if(l&&!l.classList.contains("loading--end")){l.classList.add("loading--end")}},8000);
     </script>
     <script src="assets/js/master-dist.js"></script>
-    <script src="assets/js/abdelkarim-hero-top.js?v=3"></script>
+    <script src="assets/js/abdelkarim-hero-top.js?v=4"></script>
     <script src="assets/js/mats-appendix.js?v=2" defer></script>
     <script src="assets/js/footer-rope-divider.js?v=1" defer></script>
     <script src="assets/js/hero-site-bg-glitch.js?v=1" defer></script>
     <script src="assets/js/skills-section.js?v=9" defer></script>
-    <script type="module" src="assets/js/awwwards-polish.js?v=4"></script>
+    <script type="module" src="assets/js/awwwards-polish.js?v=5"></script>
+    <script type="module" src="assets/js/tool-atlas.js?v=1"></script>
     <script type="module" src="assets/js/pixel-hover.js?v=6"></script>
     <script type="module" src="assets/js/signal-profile-reveal.js?v=7"></script>
     <script>
         (function(){
             var header = document.getElementById("header");
             if (!header) return;
-            header.addEventListener("click", function(event){
-                var link = event.target.closest('a[href^="#"]');
+            document.addEventListener("click", function(event){
+                var link = event.target.closest('#header a[href^="#"], .hero-note a[href^="#"]');
                 if (!link) return;
                 var target = document.querySelector(link.getAttribute("href"));
                 if (!target) return;
