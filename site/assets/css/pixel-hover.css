@@ -21,6 +21,10 @@
     transition-delay: 0s;
 }
 
+.projects .img-wrap { z-index: 0; }
+.projects .image .cta { z-index: 2; }
+.pixel-hover-canvas.is-local { position: absolute; z-index: 1; }
+
 @media (max-width: 999px), (pointer: coarse), (prefers-reduced-motion: reduce) {
     .pixel-hover-canvas {
         display: none;

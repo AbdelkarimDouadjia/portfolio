@@ -107,12 +107,30 @@
     }
 
     var desktopMotion = window.matchMedia("(min-width: 1000px) and (pointer: fine)");
+    section.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && event.target.matches(".spotlight-story__spot")) event.target.blur();
+    });
+    document.addEventListener("pointerdown", function (event) {
+        var active = document.activeElement;
+        if (active && active.matches(".spotlight-story__spot") && !active.contains(event.target)) active.blur();
+    });
+    section.querySelectorAll(".spotlight-story__spot").forEach(function (spot) {
+        function fitPreview() {
+            if (desktopMotion.matches && !reducedMotion.matches) return;
+            var rect = spot.getBoundingClientRect();
+            var center = rect.left + rect.width / 2;
+            var safeCenter = Math.max(121, Math.min(window.innerWidth - 121, center));
+            spot.style.setProperty("--card-shift", (safeCenter - center) + "px");
+        }
+        spot.addEventListener("focus", fitPreview);
+        window.addEventListener("resize", fitPreview);
+    });
     if (!desktopMotion.matches || reducedMotion.matches) return;
 
     import("../../node_modules/gsap/index.js").then(function (module) {
         var gsap = module.gsap || module.default;
-        var TILT_MAX = 25;
-        var DRIFT_MAX = 25;
+        var TILT_MAX = 12;
+        var DRIFT_MAX = 16;
         var SMOOTHING = 0.075;
 
         section.querySelectorAll(".spotlight-story__spot").forEach(function (spot) {
@@ -156,15 +174,15 @@
                 startTicker();
                 gsap.to(card, {
                     width: width,
-                    height: width * 0.72,
-                    borderRadius: 3,
+                    height: width,
+                    "--frame-open": 1,
                     duration: 0.72,
                     ease: "power3.out",
                     overwrite: "auto"
                 });
                 gsap.to(image, {
                     autoAlpha: 1,
-                    scale: 1.03,
+                    scale: 1,
                     duration: 0.5,
                     delay: 0.08,
                     ease: "power2.out",
@@ -187,6 +205,7 @@
                 gsap.to(card, {
                     width: spot.offsetWidth,
                     height: spot.offsetHeight,
+                    "--frame-open": 0,
                     borderRadius: 0,
                     duration: 0.48,
                     ease: "power3.inOut",

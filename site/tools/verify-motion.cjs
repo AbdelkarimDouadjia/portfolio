@@ -33,7 +33,7 @@ fs.mkdirSync(output, { recursive: true });
       }
       const signal = sections["#profile-signal"];
       await scrollTo(signal.top + (signal.height - 800) * .5);
-      assert.ok(await page.locator("[data-signal-reveal] canvas").count());
+      assert.ok(await page.locator("[data-ascii-portrait] canvas").count());
       await page.screenshot({ path: path.join(output, `signal-motion-${width}.png`) });
       const statement = sections["#skills"];
       await scrollTo(statement.top + (statement.height - 800) * .98);

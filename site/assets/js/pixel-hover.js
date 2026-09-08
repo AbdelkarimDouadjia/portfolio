@@ -138,7 +138,12 @@ if (canHover && !reduceMotion) {
 
         const width = Math.max(1, Math.round(rect.width));
         const height = Math.max(1, Math.round(rect.height));
-        renderer.domElement.style.transform = `translate3d(${Math.round(rect.left)}px, ${Math.round(rect.top)}px, 0)`;
+        const localFrame = target.closest(".projects .img-wrap");
+        const host = localFrame || document.body;
+        if (renderer.domElement.parentElement !== host) host.appendChild(renderer.domElement);
+        renderer.domElement.classList.toggle("is-local", Boolean(localFrame));
+        const origin = localFrame ? localFrame.getBoundingClientRect() : { left: 0, top: 0 };
+        renderer.domElement.style.transform = `translate3d(${Math.round(rect.left - origin.left)}px, ${Math.round(rect.top - origin.top)}px, 0)`;
         const frame = target.closest(".img-wrap, .process-study__media");
         if (frame) {
             const crop = frame.getBoundingClientRect();

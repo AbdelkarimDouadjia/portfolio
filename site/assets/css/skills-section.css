@@ -112,6 +112,9 @@
     outline-offset: 6px;
 }
 
+.spotlight-story__spot:hover,
+.spotlight-story__spot:focus { z-index: 6; }
+
 .spotlight-story__spot::after {
     content: "";
     position: absolute;
@@ -123,6 +126,7 @@
 }
 
 .spotlight-story__card {
+    --frame-open: 0;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -135,13 +139,39 @@
     transform-style: preserve-3d;
     transform-origin: center;
     will-change: width, height, transform;
+    clip-path: polygon(0 0, 84% 0, 84% 5%, 94% 5%, 100% 11%, 100% 100%, 16% 100%, 16% 95%, 6% 95%, 0 89%);
+}
+
+.spotlight-story__card::before {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    z-index: 2;
+    border: 1px solid #ffffff85;
+    border-radius: 2px;
+    opacity: var(--frame-open);
+    pointer-events: none;
+}
+
+.spotlight-story__card::after {
+    content: attr(data-study);
+    position: absolute;
+    z-index: 3;
+    left: 15px;
+    bottom: 16px;
+    color: #fff;
+    font: 10px/1.2 "Courier New", monospace;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    opacity: var(--frame-open);
+    pointer-events: none;
 }
 
 .spotlight-story__card img {
     position: absolute;
-    inset: -24px;
-    width: calc(100% + 48px);
-    height: calc(100% + 48px);
+    inset: -10px;
+    width: calc(100% + 20px);
+    height: calc(100% + 20px);
     display: block;
     object-fit: cover;
     opacity: 0;
@@ -330,7 +360,9 @@ body.spotlight-story-transitioning #header #menu-responsive ul li a::after {
 @media (max-width: 999px), (pointer: coarse), (prefers-reduced-motion: reduce) {
     .spotlight-story__spot:focus .spotlight-story__card {
         width: 210px;
-        height: 152px;
+        height: 210px;
+        --frame-open: 1;
+        transform: translate(calc(-50% + var(--card-shift, 0px)), -50%);
         z-index: 3;
     }
 
@@ -338,6 +370,13 @@ body.spotlight-story-transitioning #header #menu-responsive ul li a::after {
         opacity: 1;
     }
 }
+
+.spotlight-story-static .spotlight-story__spot:is(:hover, :focus) .spotlight-story__card {
+    width: 210px;
+    height: 210px;
+    --frame-open: 1;
+}
+.spotlight-story-static .spotlight-story__spot:is(:hover, :focus) img { opacity: 1; }
 
 @media (min-width: 1000px) and (max-height: 800px) {
     .spotlight-story__headline { font-size: 92px; }

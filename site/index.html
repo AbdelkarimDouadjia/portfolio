@@ -81,13 +81,13 @@
     <link rel="stylesheet" href="assets/css/mats-appendix.css?v=7" />
     <link rel="stylesheet" href="assets/css/adcker-brand.css?v=3" />
     <link rel="stylesheet" href="assets/css/abdelkarim-hero-top.css?v=7" />
-    <link rel="stylesheet" href="assets/css/skills-section.css?v=14" />
-    <link rel="stylesheet" href="assets/css/pixel-hover.css?v=6" />
+    <link rel="stylesheet" href="assets/css/skills-section.css?v=15" />
+    <link rel="stylesheet" href="assets/css/pixel-hover.css?v=8" />
     <link rel="stylesheet" href="assets/css/projects-page.css?v=2" />
     <link rel="stylesheet" href="assets/css/signal-profile.css?v=5" />
     <link rel="stylesheet" href="assets/css/hero-site-bg.css?v=2" />
     <link rel="stylesheet" href="assets/css/awwwards-polish.css?v=6" />
-    <link rel="stylesheet" href="assets/css/home-refinement.css?v=4" />
+    <link rel="stylesheet" href="assets/css/home-refinement.css?v=5" />
     <!--
       Theme (#movie-bg z-index:99 over #main-wrap z-index:2) put ALL page content under a full-screen
       70% opacity film. Loader (z-up to 200) can block the view for 8s. This block forces correct stacking
@@ -184,7 +184,7 @@
                         <ul>
                             <li><a href="#w" data-letters="works">works</a></li>
                             <li><a href="#skills" data-letters="skills">skills</a></li>
-                            <li><a href="https://www.linkedin.com/in/abdelkarimdouadjia" data-letters="contact me" target="_blank" rel="noreferrer">contact me</a></li>
+                            <li><a href="#contact" data-letters="contact me">contact me</a></li>
                         </ul>
                     </div>
                 </div>
@@ -386,8 +386,8 @@
                         <a class="personal-intro__link" href="https://www.linkedin.com/in/abdelkarimdouadjia" target="_blank" rel="noreferrer">More about me <img src="assets/img/mats-force/arrow_diagonal_555555.svg" alt="" /></a>
                     </div>
                     <figure class="personal-intro__portrait">
-                        <div class="signal-profile__media webgl" data-signal-reveal>
-                            <img src="assets/img/profile-github.jpg" alt="Abdelkarim's GitHub profile photograph" width="460" height="460" loading="eager" />
+                        <div class="signal-profile__media ascii-portrait" data-ascii-portrait>
+                            <img src="assets/img/profile-github.jpg" alt="Abdelkarim's GitHub profile photograph" width="460" height="460" loading="eager" data-pixel-hover="off" />
                         </div>
                     </figure>
                 </div>
@@ -556,21 +556,21 @@
                                 <span class="spotlight-story__line">
                                     <span class="spotlight-story__word">I build</span>
                                     <span class="spotlight-story__spot" tabindex="0" aria-label="Preview a computer vision system" title="Systems that see">
-                                        <span class="spotlight-story__card"><img src="assets/img/projects/sign-language-detector.png" alt="Sign language detection project" loading="lazy" decoding="async" /></span>
+                                        <span class="spotlight-story__card" data-study="01 / vision"><img src="assets/img/statement/vision.jpg" alt="Generated glass optics and a point-cloud aperture, a study of computer vision" loading="lazy" decoding="async" /></span>
                                     </span>
                                     <span class="spotlight-story__word">systems</span>
                                 </span>
                                 <span class="spotlight-story__line">
                                     <span class="spotlight-story__word">that see</span>
                                     <span class="spotlight-story__spot" tabindex="0" aria-label="Preview a learning model" title="Models that learn">
-                                        <span class="spotlight-story__card"><img src="assets/img/projects/handwritten-digit-svm.png" alt="Handwritten digit recognition project" loading="lazy" decoding="async" /></span>
+                                        <span class="spotlight-story__card" data-study="02 / learning"><img src="assets/img/statement/learning.jpg" alt="Generated silver learning lattice with flowing data points" loading="lazy" decoding="async" /></span>
                                     </span>
                                     <span class="spotlight-story__word">and learn</span>
                                 </span>
                                 <span class="spotlight-story__line">
                                     <span class="spotlight-story__word">from data</span>
                                     <span class="spotlight-story__spot" tabindex="0" aria-label="Preview a data-driven workflow" title="Data into decisions">
-                                        <span class="spotlight-story__card"><img src="assets/img/projects/h2o-automl-titanic.png" alt="Automated machine learning project" loading="lazy" decoding="async" /></span>
+                                        <span class="spotlight-story__card" data-study="03 / retrieval"><img src="assets/img/statement/retrieval.jpg" alt="Generated glass knowledge layers with connected data constellations" loading="lazy" decoding="async" /></span>
                                     </span>
                                 </span>
                                 <span class="spotlight-story__line">
@@ -579,7 +579,7 @@
                                 <span class="spotlight-story__line">
                                     <span class="spotlight-story__word">useful</span>
                                     <span class="spotlight-story__spot" tabindex="0" aria-label="Preview a useful prediction product" title="Useful by design">
-                                        <span class="spotlight-story__card"><img src="assets/img/projects/heart-disease-decision-tree.png" alt="Heart disease prediction project" loading="lazy" decoding="async" /></span>
+                                        <span class="spotlight-story__card" data-study="04 / systems"><img src="assets/img/statement/systems.jpg" alt="Generated precision mechanism connecting rings around a glass core" loading="lazy" decoding="async" /></span>
                                     </span>
                                     <span class="spotlight-story__word">products.</span>
                                 </span>
@@ -667,7 +667,7 @@
                             </div>
                         </div>
                     </section>
-                    <section class="contact" data-aw-section="contact">
+                    <section class="contact" id="contact" data-aw-section="contact">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="maintitle">
@@ -759,28 +759,14 @@
     <script src="assets/js/mats-appendix.js?v=2" defer></script>
     <script src="assets/js/footer-rope-divider.js?v=1" defer></script>
     <script src="assets/js/hero-site-bg-glitch.js?v=1" defer></script>
-    <script src="assets/js/skills-section.js?v=10" defer></script>
+    <script src="assets/js/skills-section.js?v=11" defer></script>
     <script type="module" src="assets/js/awwwards-polish.js?v=6"></script>
     <script type="module" src="assets/js/tool-atlas.js?v=3"></script>
     <script type="module" src="assets/js/home-studies.js?v=1"></script>
-    <script type="module" src="assets/js/pixel-hover.js?v=7"></script>
+    <script src="assets/js/ascii-portrait.js" defer></script>
+    <script src="assets/js/home-navigation.js" defer></script>
+    <script type="module" src="assets/js/pixel-hover.js?v=8"></script>
     <script type="module" src="assets/js/signal-profile-reveal.js?v=9"></script>
-    <script>
-        (function(){
-            var header = document.getElementById("header");
-            if (!header) return;
-            document.addEventListener("click", function(event){
-                var link = event.target.closest('#header a[href^="#"], .hero-work-link[href^="#"]');
-                if (!link) return;
-                var target = document.querySelector(link.getAttribute("href"));
-                if (!target) return;
-                event.preventDefault();
-                event.stopImmediatePropagation();
-                var top = target.getBoundingClientRect().top + window.pageYOffset - 108;
-                window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
-            }, true);
-        })();
-    </script>
     <script>
         (function(){
             var $ = window.jQuery;
