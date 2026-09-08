@@ -1,3 +1,12 @@
+document.querySelector("[data-ai-copy]")?.addEventListener("click", () => {
+  const source = document.querySelector('.personal-intro__ai a[href^="https://chatgpt.com/"]');
+  const question = source && new URL(source.href).searchParams.get("q");
+  if (question && navigator.clipboard) {
+    // Opening Gemini remains functional when clipboard access is unavailable.
+    navigator.clipboard.writeText(question).catch(() => {});
+  }
+});
+
 // The legacy appear plugin misses jumps inside the transformed scroll container.
 const projectObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {

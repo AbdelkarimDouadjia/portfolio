@@ -20,10 +20,14 @@ fs.mkdirSync(output, { recursive: true });
       assert.equal(await page.locator('.contact .btn-line').getAttribute('href'), 'mailto:abdelkarim.douadjia@gmail.com');
       assert.equal(await page.locator('link[rel="icon"][type="image/svg+xml"]').getAttribute('href'), 'assets/img/adcker-favicon.svg');
       const aiLinks = await page.locator('.personal-intro__ai a').evaluateAll(links => links.map(a => ({href:a.href,target:a.target})));
-      assert.equal(aiLinks.length, 3);
+      assert.equal(aiLinks.length, 4);
       for (const link of aiLinks) {
         const url = new URL(link.href);
         assert.equal(link.target, '_blank');
+        if (url.hostname === 'gemini.google.com') {
+          assert.equal(url.pathname, '/app');
+          continue;
+        }
         assert.ok(url.searchParams.get('q').includes('https://abdelkarim.me'));
         assert.ok(url.searchParams.get('q').includes('Abdelkarim Douadjia'));
       }
