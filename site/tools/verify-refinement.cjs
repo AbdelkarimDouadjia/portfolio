@@ -59,7 +59,7 @@ fs.mkdirSync(output, { recursive: true });
         assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, name + " overflow " + width);
         await page.screenshot({ path: path.join(output, name + "-" + width + ".png") });
         if (name === "about" && width === 390) {
-          const coloredPixels = await page.locator("[data-ascii-portrait] canvas").evaluate(canvas => {
+          const coloredPixels = await page.locator("[data-ascii-output]").evaluate(canvas => {
             const data = canvas.getContext("2d").getImageData(0, 0, canvas.width, canvas.height).data;
             let count = 0;
             for (let i = 0; i < data.length; i += 4) if (data[i] > 50 && data[i + 1] > 40) count++;

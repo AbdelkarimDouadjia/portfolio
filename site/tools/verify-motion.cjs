@@ -40,7 +40,7 @@ fs.mkdirSync(output, { recursive: true });
       assert.ok(await page.locator("#skills").evaluate(e => Number(e.style.getPropertyValue("--spotlight-paper-progress"))) > .9);
       await page.locator(".spotlight-story__spot").first().focus();
       await page.waitForTimeout(850);
-      assert.ok(await page.locator(".spotlight-story__card").first().evaluate(e => e.getBoundingClientRect().width) > 150);
+      assert.ok(await page.locator(".spotlight-story__card").first().evaluate(e => e.getBoundingClientRect().width) >= 140);
       await page.screenshot({ path: path.join(output, `statement-hover-${width}.png`) });
       const phase = sections[".phase-shift"];
       await scrollTo(phase.top + phase.height - 820);

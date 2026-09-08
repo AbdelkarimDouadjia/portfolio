@@ -119,7 +119,8 @@
             if (desktopMotion.matches && !reducedMotion.matches) return;
             var rect = spot.getBoundingClientRect();
             var center = rect.left + rect.width / 2;
-            var safeCenter = Math.max(121, Math.min(window.innerWidth - 121, center));
+            var margin = parseFloat(getComputedStyle(section).getPropertyValue("--preview-size")) / 2 + 16;
+            var safeCenter = Math.max(margin, Math.min(window.innerWidth - margin, center));
             spot.style.setProperty("--card-shift", (safeCenter - center) + "px");
         }
         spot.addEventListener("focus", fitPreview);
@@ -170,7 +171,7 @@
             }
 
             function openCard() {
-                var width = Math.min(284, Math.max(210, window.innerWidth * 0.18));
+                var width = parseFloat(getComputedStyle(section).getPropertyValue("--preview-size"));
                 startTicker();
                 gsap.to(card, {
                     width: width,

@@ -17,12 +17,24 @@ fs.mkdirSync(output, { recursive: true });
       await page.goto(base, { waitUntil: 'domcontentloaded' });
       await page.waitForFunction(() => getComputedStyle(document.querySelector('#loader')).visibility === 'hidden');
       await page.evaluate(() => document.fonts.ready);
+      assert.equal(await page.locator('.contact .btn-line').getAttribute('href'), 'mailto:abdelkarim.douadjia@gmail.com');
+      assert.equal(await page.locator('link[rel="icon"][type="image/svg+xml"]').getAttribute('href'), 'assets/img/adcker-favicon.svg');
+      const aiLinks = await page.locator('.personal-intro__ai a').evaluateAll(links => links.map(a => ({href:a.href,target:a.target})));
+      assert.equal(aiLinks.length, 3);
+      for (const link of aiLinks) {
+        const url = new URL(link.href);
+        assert.equal(link.target, '_blank');
+        assert.ok(url.searchParams.get('q').includes('https://abdelkarim.me'));
+        assert.ok(url.searchParams.get('q').includes('Abdelkarim Douadjia'));
+      }
+      assert.ok((await page.request.get(new URL('assets/img/adcker-favicon.svg', base).href)).ok());
       async function settle() {
         await page.waitForFunction(() => {
           const t = getComputedStyle(document.querySelector('#t')).transform;
           return t === 'none' || Math.abs(new DOMMatrix(t).m42 + scrollY) < 1;
         });
         await page.waitForTimeout(350);
+        assert.equal(await page.locator('#main-wrap').evaluate(el => el.scrollLeft), 0);
       }
       async function place(selector, top) {
         await page.locator(selector).first().evaluate((el, top) => {
@@ -42,12 +54,17 @@ fs.mkdirSync(output, { recursive: true });
         else assert.ok(Math.abs((await page.locator(hash).boundingBox()).y - 108) < 4, hash);
       }
       assert.equal(await page.locator('#header').evaluate(el => getComputedStyle(el).backgroundColor), 'rgba(0, 0, 0, 0)');
+      await place('.personal-intro__ai', 180);
+      const aiBox = await page.locator('.personal-intro__ai').boundingBox();
+      assert.ok(aiBox.x >= 0 && aiBox.x + aiBox.width <= width);
+      assert.ok(await page.locator('.personal-intro__ai').evaluate(el => el.getBoundingClientRect().bottom <= el.closest('section').getBoundingClientRect().bottom));
+      await page.screenshot({path:path.join(output, `ask-ai-${width}.png`)});
       if (width !== 320) {
         await place('[data-ascii-portrait]', height * .72);
         await page.locator('[data-ascii-portrait].ascii-ready').waitFor();
-        const ascii = await page.locator('[data-ascii-portrait] canvas').screenshot();
+        const ascii = await page.locator('[data-ascii-output]').screenshot();
         fs.writeFileSync(path.join(output, `ascii-${width}.png`), ascii);
-        const ink = await page.locator('[data-ascii-portrait] canvas').evaluate(c => {
+        const ink = await page.locator('[data-ascii-output]').evaluate(c => {
           const data = c.getContext('2d').getImageData(0,0,c.width,c.height).data;
           let n = 0; for(let i=3;i<data.length;i+=4) if(data[i]>20) n++;
           return n;
@@ -55,10 +72,30 @@ fs.mkdirSync(output, { recursive: true });
         assert.ok(ink > 500, 'ASCII portrait is blank');
         await page.screenshot({path:path.join(output,`about-ascii-${width}.png`)});
         await place('[data-ascii-portrait]', height * .1);
-        const photo = await page.locator('[data-ascii-portrait] canvas').screenshot();
+        const photo = await page.locator('[data-ascii-output]').screenshot();
         fs.writeFileSync(path.join(output, `portrait-${width}.png`), photo);
         assert.ok(!ascii.equals(photo), 'Scroll must change the portrait');
         assert.ok(Number(await page.locator('[data-ascii-portrait]').getAttribute('data-ascii-progress')) > .95);
+        if (width === 1366) {
+          await place('[data-ascii-portrait]', 180);
+          const portrait = page.locator('[data-ascii-portrait]');
+          await portrait.hover();
+          await page.waitForTimeout(300);
+          const rect = await portrait.boundingBox();
+          await page.mouse.move(rect.x + rect.width * .7, rect.y + rect.height * .4, {steps:8});
+          const effect = portrait.locator('.pixel-hover-canvas');
+          await page.waitForFunction(() => document.querySelector('[data-ascii-portrait] .pixel-hover-canvas')?.dataset.source === 'ascii');
+          assert.ok(await portrait.evaluate(el => el.classList.contains('is-glitching')));
+          const first = await effect.screenshot();
+          await page.mouse.move(rect.x + rect.width * .25, rect.y + rect.height * .7, {steps:8});
+          await page.waitForTimeout(80);
+          assert.ok(!first.equals(await effect.screenshot()), 'Glitch must respond to the pointer');
+          await page.screenshot({path:path.join(output,'portrait-glitch.png')});
+          await page.mouse.move(2, 500);
+          await page.waitForFunction(() => !document.querySelector('[data-ascii-portrait]').classList.contains('is-glitching'));
+          await place('#profile-signal', 100);
+          await page.screenshot({path:path.join(output,'ask-ai-desktop.png')});
+        }
       } else {
         await place('[data-ascii-portrait]', 160);
         assert.equal(await page.locator('[data-ascii-portrait] img').evaluate(el => getComputedStyle(el).opacity), '1');
@@ -71,8 +108,9 @@ fs.mkdirSync(output, { recursive: true });
         await page.waitForTimeout(850);
         const card = spots.nth(i).locator('.spotlight-story__card');
         assert.ok(await card.locator('img').evaluate(el => el.complete && el.naturalWidth > 1000));
+        assert.ok((await card.locator('img').getAttribute('src')).startsWith('assets/img/projects/'));
         const rect = await card.boundingBox();
-        assert.ok(rect.width > 180 && rect.x >= 0 && rect.x + rect.width <= width + 1, `Preview ${i} clipped at ${width}`);
+        assert.ok(rect.width >= 140 && rect.width <= 165 && rect.x >= 0 && rect.x + rect.width <= width + 1, `Preview ${i} size/clipping at ${width}`);
         assert.ok(await card.evaluate(el => getComputedStyle(el).clipPath.startsWith('polygon')));
         await page.screenshot({path:path.join(output,`preview-${i}-${width}.png`)});
       }
@@ -99,6 +137,7 @@ fs.mkdirSync(output, { recursive: true });
       await page.waitForTimeout(2000); await settle();
       assert.equal(await page.evaluate(() => scrollY), 0);
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
+      assert.equal(await page.locator('#main-wrap').evaluate(el => el.scrollLeft), 0, 'The smooth-scroll viewport must not shift horizontally');
       if (width === 1366) {
         await place('.projects .img-wrap', 150);
         await page.waitForTimeout(1500);

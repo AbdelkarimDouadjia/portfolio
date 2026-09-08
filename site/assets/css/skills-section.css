@@ -1,4 +1,5 @@
 .page-content section.spotlight-story {
+    --preview-size: 160px;
     --spotlight-ink: #090909;
     --spotlight-paper: #f1f1ed;
     --spotlight-sticky-offset: 0px;
@@ -157,10 +158,10 @@
     content: attr(data-study);
     position: absolute;
     z-index: 3;
-    left: 15px;
-    bottom: 16px;
+    left: 12px;
+    bottom: 12px;
     color: #fff;
-    font: 10px/1.2 "Courier New", monospace;
+    font: 9px/1.2 "Courier New", monospace;
     letter-spacing: 0;
     text-transform: uppercase;
     opacity: var(--frame-open);
@@ -358,9 +359,10 @@ body.spotlight-story-transitioning #header #menu-responsive ul li a::after {
 }
 
 @media (max-width: 999px), (pointer: coarse), (prefers-reduced-motion: reduce) {
+    .page-content section.spotlight-story { --preview-size: 144px; }
     .spotlight-story__spot:focus .spotlight-story__card {
-        width: 210px;
-        height: 210px;
+        width: var(--preview-size);
+        height: var(--preview-size);
         --frame-open: 1;
         transform: translate(calc(-50% + var(--card-shift, 0px)), -50%);
         z-index: 3;
@@ -372,8 +374,8 @@ body.spotlight-story-transitioning #header #menu-responsive ul li a::after {
 }
 
 .spotlight-story-static .spotlight-story__spot:is(:hover, :focus) .spotlight-story__card {
-    width: 210px;
-    height: 210px;
+    width: var(--preview-size);
+    height: var(--preview-size);
     --frame-open: 1;
 }
 .spotlight-story-static .spotlight-story__spot:is(:hover, :focus) img { opacity: 1; }

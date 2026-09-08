@@ -6,6 +6,7 @@
     const reduced = matchMedia("(prefers-reduced-motion: reduce)");
     const canvas = document.createElement("canvas");
     canvas.setAttribute("aria-hidden", "true");
+    canvas.setAttribute("data-ascii-output", "");
     const context = canvas.getContext("2d");
     const sample = document.createElement("canvas");
     const sampleContext = sample.getContext("2d", { willReadFrequently: true });
@@ -13,7 +14,32 @@
     const glyphs = ".,:;=+*%#@";
     const clamp = value => Math.max(0, Math.min(1, value));
     let width = 0, height = 0, columns = 0, rows = 0, cells = [];
-    let visible = false, frame = 0, lastProgress = -1, lastBeat = -1;
+    let visible = false, frame = 0, lastProgress = -1, lastBeat = -1, lastNoisyProgress = -1;
+    const noise = (x, y) => {
+        const value = Math.sin(x * 12.9898 + y * 78.233) * 43758.5453123;
+        return value - Math.floor(value);
+    };
+
+    function drawNoisyCover(progress) {
+        // The block thresholds mirror signal-profile-shaders.js, over the live ASCII layer.
+        const size = 16, cols = Math.ceil(width / size), lines = Math.ceil(height / size);
+        context.font = 'bold 9px "Courier New", monospace';
+        for (let y = 0; y < lines; y++) {
+            for (let x = 0; x < cols; x++) {
+                const random = noise(x, y);
+                const blockReveal = progress - (y / lines * .35 * random + .05 * noise(0, y));
+                if (blockReveal > 0) continue;
+                context.clearRect(x * size, y * size, size, size);
+                const alpha = clamp((blockReveal + .22 - .06 * random) / .22);
+                if (progress > .001 && alpha > .05) {
+                    context.globalAlpha = alpha;
+                    context.fillStyle = "#fff";
+                    context.fillText("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"[Math.floor(noise(x + progress, y) * 36)], x * size + 8, y * size + 8);
+                }
+            }
+        }
+        context.globalAlpha = 1;
+    }
 
     function resize() {
         width = host.clientWidth;
@@ -42,8 +68,9 @@
         if (!visible || document.hidden || reduced.matches) return;
         const rect = host.getBoundingClientRect();
         const progress = clamp((innerHeight * .94 - rect.top) / (innerHeight * .8));
+        const noisyProgress = Math.min(progress * 1.4, clamp(rect.bottom / (innerHeight * .18)) * .42);
         const beat = Math.floor(time / 110);
-        if (Math.abs(progress - lastProgress) > .001 || (progress < .62 && beat !== lastBeat)) {
+        if (Math.abs(progress - lastProgress) > .001 || Math.abs(noisyProgress - lastNoisyProgress) > .001 || (progress < .62 && beat !== lastBeat)) {
             context.clearRect(0, 0, width, height);
             const cw = width / columns, ch = height / rows;
             context.font = `${Math.max(7, ch * .9)}px "Courier New", monospace`;
@@ -71,8 +98,11 @@
                 }
             });
             context.globalAlpha = 1;
+            if (noisyProgress < .4) drawNoisyCover(noisyProgress);
             host.dataset.asciiProgress = progress.toFixed(3);
+            host.dataset.noisyProgress = noisyProgress.toFixed(3);
             lastProgress = progress;
+            lastNoisyProgress = noisyProgress;
             lastBeat = beat;
         }
         frame = requestAnimationFrame(draw);

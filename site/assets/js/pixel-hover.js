@@ -138,7 +138,7 @@ if (canHover && !reduceMotion) {
 
         const width = Math.max(1, Math.round(rect.width));
         const height = Math.max(1, Math.round(rect.height));
-        const localFrame = target.closest(".projects .img-wrap");
+        const localFrame = target.closest(".projects .img-wrap, .ascii-portrait");
         const host = localFrame || document.body;
         if (renderer.domElement.parentElement !== host) host.appendChild(renderer.domElement);
         renderer.domElement.classList.toggle("is-local", Boolean(localFrame));
@@ -211,6 +211,7 @@ if (canHover && !reduceMotion) {
         }
 
         const peak = updateField();
+        if (material.uniforms.uTexture.value?.isCanvasTexture) material.uniforms.uTexture.value.needsUpdate = true;
         renderer.render(scene, camera);
 
         if (!pointerInside && peak < 0.001 && Math.abs(mouse.vX) < 0.0001 && Math.abs(mouse.vY) < 0.0001) {
@@ -222,6 +223,7 @@ if (canHover && !reduceMotion) {
     }
 
     function stopRendering() {
+        target?.classList.remove("is-glitching");
         renderer.domElement.classList.remove("is-visible");
         renderer.domElement.removeAttribute("data-active");
         target = null;
@@ -248,9 +250,18 @@ if (canHover && !reduceMotion) {
                 texture.image.naturalHeight || texture.image.height
             );
             renderer.domElement.classList.add("is-visible");
+            if (texture.isCanvasTexture) target.classList.add("is-glitching");
+            renderer.domElement.dataset.source = texture.isCanvasTexture ? "ascii" : "image";
             renderer.domElement.dataset.active = image.alt || "image";
             startRendering();
         };
+
+        const ascii = image.closest("[data-ascii-portrait]")?.querySelector("[data-ascii-output]");
+        if (ascii) {
+            if (!textureCache.has(ascii)) textureCache.set(ascii, new THREE.CanvasTexture(ascii));
+            ready(textureCache.get(ascii));
+            return;
+        }
 
         if (textureCache.has(source)) {
             ready(textureCache.get(source));
@@ -268,6 +279,7 @@ if (canHover && !reduceMotion) {
         const x = THREE.MathUtils.clamp((event.clientX - rect.left) / rect.width, 0, 1);
         const y = THREE.MathUtils.clamp((event.clientY - rect.top) / rect.height, 0, 1);
 
+        target?.classList.remove("is-glitching");
         target = hitArea;
         targetImage = image;
         pointerInside = true;
